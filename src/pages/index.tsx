@@ -1,7 +1,12 @@
 import { useEffect } from "react";
 import styled from "styled-components";
+import Header from "../components/Header"
 
 
 export default function Home() {
-  return <div>Bom dia</div>;
+  return(
+    <>
+    <Header/>
+    </>
+  );
 }
