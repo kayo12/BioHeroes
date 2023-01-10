@@ -22,6 +22,7 @@ const SearchButton = styled.button`
   border: none;
   background-color: white;
   height: 35px;
+  cursor: pointer;
 `;
 
 const SForm = styled.form`
@@ -30,13 +31,13 @@ const SForm = styled.form`
   display: flex;
 `;
 const SInput = styled.input`
-height: 35px;
+  height: 35px;
   width: 100%;
   padding: 0.5rem;
   outline: none;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
-    border:none;
+  border:none;
   `;
 
 interface InputSearch {

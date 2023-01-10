@@ -4,7 +4,7 @@ import { Search } from './Search'
 const Navbar = styled.nav`
     width: 100vw;
     height: 70px;
-    background-color: #696969;
+    background-color:	#FFD700;
     display: flex;
     justify-content: space-around;
     opacity: 0.9;
@@ -32,7 +32,7 @@ export default function Header(props){
                 <NavLink>Series</NavLink>
                 <NavLink>Ranking</NavLink>
               </NavList>
-              <Search />
+              <Search/>
           </Navbar>  
     )
 
