@@ -1,18 +1,28 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
+const Footer = styled.footer`
+  height: 300pc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-const Title = styled.h1`
-    color: blue
+`
+const CopyRight = styled.span`
+  font-size: 0.8rem;
+  font-weight: bold;
 `
 
-export default function Header(){
+export default function Header() {
 
-    return(
-        <>
-            <Title>
-                Cabeçalho aqui
-            </Title>
-        </>
-    )
+  const date = new Date()
 
+  return (
+    <>
+      <Footer>
+        <CopyRight>
+          Copyright {date.getFullYear()}
+        </CopyRight>
+      </Footer>
+    </>
+  );
 }

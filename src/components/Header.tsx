@@ -7,7 +7,7 @@ const Navbar = styled.nav`
     background-color:	#FFD700;
     display: flex;
     justify-content: space-around;
-    opacity: 0.9;
+    
  `
 
 const NavList = styled.ul`
@@ -18,6 +18,8 @@ const NavList = styled.ul`
 `
 
 const NavLink = styled.li`
+    font-weight: bold;
+    font-size: 1rem;
     padding: 0.5rem 1rem;
     border-radius: 10px;
     list-style-type: none; 

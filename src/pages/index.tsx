@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
 import Series from '../components/Series'
+import Footer from '../components/Footer'
 
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
     <Container>
       <Header />
       <Series/>
+      <Footer/>
     </Container>
   );
 }
