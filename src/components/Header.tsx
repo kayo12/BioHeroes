@@ -2,8 +2,9 @@ import styled from 'styled-components'
 import { Search } from './Search'
 
 const Navbar = styled.nav`
-    width: 100vw;
-    height: 70px;
+    
+    width: 100%;
+    height: auto;
     background-color:	#FFD700;
     display: flex;
     justify-content: space-around;

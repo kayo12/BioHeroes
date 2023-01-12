@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 const Footer = styled.footer`
-  height: 300pc;
+  height: 300px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  background-color: #FFD700;
 `
 const CopyRight = styled.span`
   font-size: 0.8rem;

@@ -9,8 +9,8 @@ export default function Home() {
 
 
   const Container = styled.div`
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
     background-color: #F0E68C;
     display: flex;
     flex-direction: column;

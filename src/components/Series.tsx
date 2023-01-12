@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import main from "../assets/marvel_avengers.png";
 import Cards from "./Cards";
+import { FaChevronCircleRight, FaChevronCircleLeft } from "react-icons/fa";
 import { useEffect, useState } from "react";
 
 const PopSection = styled.section`
   width: 100%;
-  height: auto;
+  height: 100vh;
   display: flex;
   justify-content: center;
 `;
@@ -34,10 +35,35 @@ const PopBody = styled.ul`
   gap: 10px;
 
   li {
-
     width: 100%;
     height: auto;
   }
+`;
+
+const PopBtnRight = styled.button`
+  width: 30px;
+  font-size: 40px;
+  background: none;
+  border: none;
+  position: relative;
+  right: 10px;
+`;
+
+const PopBtnLeft = styled.button`
+  width: 30px;
+  position: relative;
+  left: 10px;
+  font-size: 40px;
+  background: none;
+  border: none;
+`;
+
+const PopControl = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-bettwen;
+  padding-right:  1.5rem;
 `;
 
 interface Series {
@@ -67,6 +93,14 @@ export default function Series(props?: Series) {
     <PopSection>
       <PopContainer>
         <PopHeader>Series </PopHeader>
+        <PopControl>
+          <PopBtnLeft>
+            <FaChevronCircleRight />
+          </PopBtnLeft>
+          <PopBtnRight>
+            <FaChevronCircleLeft />
+          </PopBtnRight>
+        </PopControl>
         <PopBody>
           {series.map((current, index) => {
             return current.thumbnail.path + "." + current.thumbnail.extension !=
@@ -84,6 +118,7 @@ export default function Series(props?: Series) {
             );
           })}
         </PopBody>
+        
       </PopContainer>
     </PopSection>
   );
