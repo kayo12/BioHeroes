@@ -6,22 +6,28 @@ import { useEffect, useState } from "react";
 
 const PopSection = styled.section`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
+  align-items: center;
+
 `;
+
 const PopContainer = styled.div`
-  max-width: 990px;
+  max-width: 980px;
+  height: auto; 
   justify-content: space-around;
   display: flex;
   flex-direction: column;
 `;
+
 const PopHeader = styled.h3`
   width: 100%;
   padding-left: 0.5rem;
   height: 20px;
   border-left: 4px solid red;
   display: flex;
+
 `;
 
 const PopBody = styled.ul`
