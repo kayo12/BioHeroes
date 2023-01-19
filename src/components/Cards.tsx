@@ -1,37 +1,55 @@
 import styled from "styled-components";
 
-const Card = styled.div`
-  width: 100%;
-  height: 100%;
-  background-color: #ffd700;
-`;
-const CardBody = styled.div`
-  display: flex;
-  justify-content: center;
-  height: 80px;
-`;
-const CardTitle = styled.p`
-  font-weight: bold;
-  padding: 0 0.2rem;
-  text-align: center;
-`;
+interface ModelCard {
+  
+  width: string,
+  height: string,
+  image: string,
+  title: string,
+}
 
-export default function Cards(props) {
+const Cards = (props: ModelCard) => {
 
-  const CardImage = styled.div`
+  const Card = styled.div`
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
     background-image: url(${props.image});
     background-repeat: no-repeat;
     background-size: cover;
-    width: 200px;
-    height: 200px;
+    width: ${props.width};
+    height: ${props.height};
+    
+  `;
+
+
+  const CardBody = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 100%;
+    background-color: #FFD700;
+    opacity: 0.9;
+
+    .CardTitle {
+      font-weight: bold;
+      padding: 0 0.2rem;
+      text-align: center;
+      color: #000000;
+    }
+
+    
   `;
 
   return (
     <Card>
-      <CardImage />
       <CardBody>
-        <CardTitle>{props.title}</CardTitle>
+        <p className="CardTitle">{props.title}</p>
       </CardBody>
     </Card>
   );
 }
+
+
+export default Cards

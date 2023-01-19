@@ -6,31 +6,31 @@ import { useEffect, useState } from "react";
 
 const PopSection = styled.section`
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 
-`;
 
-const PopContainer = styled.div`
+
+.PopContainer {
   max-width: 980px;
+  width: 100%;
   height: auto; 
-  justify-content: space-around;
+  justify-content: space-evenly;
   display: flex;
   flex-direction: column;
-`;
+}
 
-const PopHeader = styled.h3`
+.PopHeader {
   width: 100%;
   padding-left: 0.5rem;
   height: 20px;
   border-left: 4px solid red;
   display: flex;
+}
 
-`;
-
-const PopBody = styled.ul`
+.PopBody {
   max-width: 100vw;
   height: auto;
   display: flex;
@@ -39,37 +39,39 @@ const PopBody = styled.ul`
   list-style-type: none;
   overflow-x: scroll;
   gap: 10px;
+}
 
   li {
     width: 100%;
     height: auto;
   }
-`;
 
-const PopBtnRight = styled.button`
+
+.PopBtnRight {
   width: 30px;
   font-size: 40px;
   background: none;
   border: none;
   position: relative;
   right: 10px;
-`;
+}
 
-const PopBtnLeft = styled.button`
+.PopBtnLeft {
   width: 30px;
   position: relative;
   left: 10px;
   font-size: 40px;
   background: none;
   border: none;
-`;
+}
 
-const PopControl = styled.div`
+.PopControl {
   width: 100%;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-bettwen;
   padding-right:  1.5rem;
+}
 `;
 
 interface Series {
@@ -97,23 +99,25 @@ export default function Series(props?: Series) {
 
   return (
     <PopSection>
-      <PopContainer>
-        <PopHeader>Series </PopHeader>
-        <PopControl>
-          <PopBtnLeft>
+      <div className="PopContainer">
+        <h3 className="PopHeader">Séries </h3>
+        <div className="PopControl">
+          <button className="PopBtnLeft">
             <FaChevronCircleRight />
-          </PopBtnLeft>
-          <PopBtnRight>
+          </button>
+          <button className="PopBtnRight">
             <FaChevronCircleLeft />
-          </PopBtnRight>
-        </PopControl>
-        <PopBody>
+          </button>
+        </div>
+        <ul className="PopBody">
           {series.map((current, index) => {
             return current.thumbnail.path + "." + current.thumbnail.extension !=
               "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" ? (
               <li key={index}>
                 <Cards
                   title={current.title}
+                  width={"200px"}
+                  height={"300px"}
                   image={
                     current.thumbnail.path + "." + current.thumbnail.extension
                   }
@@ -123,9 +127,8 @@ export default function Series(props?: Series) {
               ""
             );
           })}
-        </PopBody>
-        
-      </PopContainer>
+        </ul>
+      </div>
     </PopSection>
   );
 }
