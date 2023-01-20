@@ -17,8 +17,9 @@ export default function Home() {
     <Container>
       <Header />
       <Main />
-      <Series />
       <Characteres />
+      <Series />
+
       <Footer />
     </Container>
   );
