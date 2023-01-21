@@ -66,7 +66,7 @@ export default function Characters(props) {
 
   useEffect(() => {
     fetch(
-      `http://gateway.marvel.com/v1/public/characters?ts=1&limit=8&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_API_HASH}`
+      `https://gateway.marvel.com/v1/public/characters?ts=1&limit=8&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_API_HASH}`
     )
       .then((response) => {
         return response.json();

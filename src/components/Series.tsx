@@ -112,7 +112,7 @@ export default function Series(props?: Series) {
         <ul className="PopBody">
           {series.map((current, index) => {
             return current.thumbnail.path + "." + current.thumbnail.extension !=
-              "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" ? (
+              "https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" ? (
               <li key={index}>
                 <Cards
                   title={current.title}

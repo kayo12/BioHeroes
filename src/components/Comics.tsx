@@ -60,7 +60,7 @@ const Comics = (props) => {
 
   useEffect(() => {
     fetch(
-      `http://gateway.marvel.com/v1/public/comics?ts=1&limit=60&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_API_HASH}`
+      `https://gateway.marvel.com/v1/public/comics?ts=1&limit=60&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_API_HASH}`
     )
       .then((response) => {
         return response.json();
@@ -79,7 +79,7 @@ const Comics = (props) => {
       {comics.map((current, index) => {
         return (
           current.thumbnail.path + "." + current.thumbnail.extension != 
-          'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg' ?
+          'https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg' ?
 
           (<div className="Comics-Container">
              <div className="Comics-Body">
