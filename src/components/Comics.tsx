@@ -79,7 +79,7 @@ const Comics = (props) => {
       {comics.map((current, index) => {
         return (
           current.thumbnail.path + "." + current.thumbnail.extension != 
-          'https://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg' ?
+          'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg' ?
 
           (<div className="Comics-Container">
              <div className="Comics-Body">
