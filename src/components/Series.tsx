@@ -100,7 +100,7 @@ export default function Series(props?: Series) {
   return (
     <PopSection>
       <div className="PopContainer">
-        <h3 className="PopHeader">Séries </h3>
+        <h3 className="PopHeader">Séries em quadrinhos </h3>
         <div className="PopControl">
           <button className="PopBtnLeft">
             <FaChevronCircleRight />

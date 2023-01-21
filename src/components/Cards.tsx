@@ -22,7 +22,6 @@ const Cards = (props: ModelCard) => {
     
   `;
 
-
   const CardBody = styled.div`
     display: flex;
     justify-content: center;
@@ -38,7 +37,6 @@ const Cards = (props: ModelCard) => {
       text-align: center;
       color: #000000;
     }
-
     
   `;
 
@@ -50,6 +48,5 @@ const Cards = (props: ModelCard) => {
     </Card>
   );
 }
-
 
 export default Cards

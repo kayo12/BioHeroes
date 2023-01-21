@@ -55,9 +55,9 @@ export default function Header(props) {
           <span>BIOHEROES</span>
         </div>
         <ul className="NavList">
-          <li className="NavLink">Populares</li>
-          <li className="NavLink">Top 10 Herois</li>
-          <li className="NavLink">Series</li>
+          <li className="NavLink">Personagens</li>
+          <li className="NavLink">Séries</li>
+          <li className="NavLink">Quadrinhos</li>
           <li className="NavLink">Ranking</li>
         </ul>
         <Search />

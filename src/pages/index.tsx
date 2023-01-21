@@ -5,6 +5,7 @@ import Series from "../components/Series";
 import Characteres from "../components/Characters";
 import Footer from "../components/Footer";
 import Main from "../components/Main";
+import Comics from "../components/Comics"
 
 export default function Home() {
   const Container = styled.div`
@@ -15,11 +16,11 @@ export default function Home() {
 
   return (
     <Container>
-      <Header />
-      <Main />
-      <Characteres />
+      <Header/>
+      <Main/>
+      <Characteres/>
+      <Comics/>
       <Series />
-
       <Footer />
     </Container>
   );

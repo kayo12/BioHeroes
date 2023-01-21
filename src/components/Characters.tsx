@@ -4,25 +4,28 @@ import Cards from "./Cards";
 
 const CharacterSection = styled.section`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 
   .Character-Container {
     max-width: 990px;
+    
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    align-items: stretch;
   }
 
   .Character-Body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 2rem 0rem;
     align-items: center;
     gap: 10px;
     width: 100%;
