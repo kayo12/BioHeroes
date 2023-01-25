@@ -5,12 +5,11 @@ const NavHeader = styled.header`
   width: 100%;
   height: 70px;
 
-
-
   .Navbar {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-wrap: wrap;
     background-color: #ffd700;
     justify-content: space-around;
   }
