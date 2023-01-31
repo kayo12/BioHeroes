@@ -18,9 +18,9 @@ export default function Home() {
     <Container>
       <Header/>
       <Main/>
-      <Characteres/>
-      <Comics/>
       <Series />
+      <Comics/>
+      <Characteres/>
       <Footer />
     </Container>
   );
