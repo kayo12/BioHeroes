@@ -21,11 +21,10 @@ const NavHeader = styled.header`
     flex: 1;
   }
 
-
   .NavHeader__Logo span{
     font-weight: bolder;
     font-size: 2rem;
-    padding: 0.4rem;
+    padding: 0.5rem;
     color: #fff;
     background-color: #ff0a0a;
   }

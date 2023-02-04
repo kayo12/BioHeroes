@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface ModelCard {
-  
+  Child_Ref: any,
   width: string,
   height: string,
   image: string,
@@ -19,7 +19,7 @@ const Cards = (props: ModelCard) => {
     background-size: cover;
     width: ${props.width};
     height: ${props.height};
-    
+   
   `;
 
   const CardBody = styled.div`
@@ -28,21 +28,25 @@ const Cards = (props: ModelCard) => {
     align-items: center;
     height: 80px;
     width: 100%;
-    background-color: #FFD700;
-    opacity: 0.9;
+  
+    background-image: linear-gradient(to bottom right, #f84b4b, #f82525);
+    &:hover{
+      opacity: 0.9;
+    }
 
     .CardTitle {
       font-weight: bold;
+      font-size: 1.3rem;
       padding: 0 0.2rem;
       text-align: center;
-      color: #000000;
+      color: #ffffff;
     }
     
   `;
 
   return (
-    <Card>
-      <CardBody>
+    <Card >
+      <CardBody >
         <p className="CardTitle">{props.title}</p>
       </CardBody>
     </Card>
