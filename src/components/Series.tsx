@@ -114,11 +114,7 @@ export default function Series(props?: Series) {
     const parentRef = Parent_Ref.current;
     const childRef = Child_Ref.current;
 
-
-    if (!parentRef || childRef) {
-      console.log("Entrou no useEffect")
       controlBtn(parentRef, childRef);
-    }
 
     fetch(
       `https://gateway.marvel.com/v1/public/series?ts=1&limit=60&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_API_HASH}`
@@ -137,8 +133,6 @@ export default function Series(props?: Series) {
 
 
   function controlBtn(parent: HTMLUListElement, child: HTMLDivElement) {
-
-
       console.log("entrou no if series");
       document
         .querySelector<HTMLElement>("#popBtnLeft")
@@ -159,7 +153,6 @@ export default function Series(props?: Series) {
     <PopSection>
       <div className="PopContainer">
         <h3 className="PopHeader">Séries em quadrinhos </h3>
-
         <div className="PopControl">
           <button className="PopBtnLeft" id="popBtnLeft">
             <FaChevronCircleRight />
