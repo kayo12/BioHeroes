@@ -12,7 +12,7 @@ const CharacterSection = styled.section`
 
   .Character-Container {
     max-width: 990px;
-    
+    padding: 20px;
     width: 100%;
     height: 100%;
     display: flex;
@@ -35,7 +35,8 @@ const CharacterSection = styled.section`
   .Character-Header {
     width: 100%;
     padding-left: 0.5rem;
-    height: 20px;
+    font-size: 2rem;
+    height: 30px;
     border-left: 4px solid red;
     display: flex;
   }

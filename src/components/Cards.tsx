@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface ModelCard {
-  Child_Ref: any,
+
   width: string,
   height: string,
   image: string,

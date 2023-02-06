@@ -6,7 +6,7 @@ import { useEffect, useState, useRef } from "react";
 
 const PopSection = styled.section`
   width: 100%;
-  height: 100%;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,12 +19,15 @@ const PopSection = styled.section`
     display: flex;
     align-items: flex-end;
     flex-direction: column;
+    padding: 20px;
+  
   }
 
   .PopHeader {
     width: 100%;
     padding-left: 0.5rem;
-    height: 20px;
+    font-size: 2rem;
+    height: 30px;
     border-left: 4px solid red;
     display: flex;
   }
@@ -109,11 +112,9 @@ export default function Series(props?: Series) {
   const [series, setSeries] = useState([]);
   const Parent_Ref = useRef<HTMLUListElement>(null);
   const Child_Ref = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const parentRef = Parent_Ref.current;
     const childRef = Child_Ref.current;
-
       controlBtn(parentRef, childRef);
 
     fetch(
@@ -129,7 +130,7 @@ export default function Series(props?: Series) {
       .catch((e) => {
         console.log(e);
       });
-  }, [Parent_Ref.current, Child_Ref.current]);
+  }, [Parent_Ref, Child_Ref]);
 
 
   function controlBtn(parent: HTMLUListElement, child: HTMLDivElement) {
@@ -205,7 +206,7 @@ export default function Series(props?: Series) {
                 "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" ? (
                 <li key={`${index}_`} >
                   <Cards
-                    Child_Ref={Child_Ref}
+
                     title={current.title}
                     width={"300px"}
                     height={"400px"}
