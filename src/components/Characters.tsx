@@ -47,13 +47,14 @@ const CharacterSection = styled.section`
     width: 100%;
   }
 
-  .Character-Paging a {
+  .Character-Paging button {
+    cursor:pointer;
     text-decoration: none;
     padding: 8px 16px;
     color: #000000;
     font-weight: bold;
   }
-  .Character-Paging a:hover {
+  .Character-Paging button:hover {
     background-color: #ff3700;
     color: #fff;
     font-weight: bold;
@@ -62,11 +63,11 @@ const CharacterSection = styled.section`
 
 export default function Characters(props) {
   const [char, setChar] = useState([]);
-  const [pages, setPages] = useState(undefined)
+  const [pages, setPages] = useState(0)
 
   useEffect(() => {
     fetch(
-      `https://gateway.marvel.com/v1/public/characters?ts=1&limit=30&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_API_HASH}`
+      `https://gateway.marvel.com/v1/public/characters?ts=1&limit=150&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_API_HASH}`
     )
       .then((response) => {
         return response.json();
@@ -78,12 +79,14 @@ export default function Characters(props) {
       .catch((e) => {
         console.log(e);
       });
-  }, []);
+  }, [pages]);
 
   const groups = () => {
 
-    let last = Number(pages?.target.value * 8);
-    let first = 8 - (Number(pages?.target.value * 8));
+
+    let first = pages != 0 ?  Math.abs(8 - (Number(pages * 8))) : 0;
+    let last =  pages != 0 ?  Number(pages * 8): 8;
+
     let gp = char.slice(first, last).map((current, index) => {
       return (
         <Cards
@@ -103,9 +106,9 @@ export default function Characters(props) {
     let group = Math.round(char.length / 8);
     let pading = [...Array(group)].map((_, indx) => {
       return (
-        <a href="" key={`${indx}_`} onClick={(current) => setPages(current)}>
+        <button  key={`${indx}_`} onClick={()  => setPages(indx + 1)}>
           {indx + 1}
-        </a>
+        </button>
       );
     });
     return pading;
