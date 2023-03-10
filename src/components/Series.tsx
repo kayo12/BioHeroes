@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import main from "../assets/marvel_avengers.png";
 import Cards from "./Cards";
+
 import { FaChevronCircleRight, FaChevronCircleLeft } from "react-icons/fa";
 import { useEffect, useState, useRef } from "react";
 
@@ -10,6 +11,7 @@ const PopSection = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 6rem 0;
 
   .PopContainer {
     max-width: 980px;
@@ -19,7 +21,7 @@ const PopSection = styled.section`
     display: flex;
     align-items: flex-end;
     flex-direction: column;
-    padding: 20px;
+
   
   }
 

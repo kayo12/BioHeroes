@@ -72,7 +72,6 @@ const ComicsSection = styled.section`
     padding: 0 5px;
   }
 
-
   .Comics-Front img {
     min-width: 290px;
     width: 100%;
@@ -82,6 +81,7 @@ const ComicsSection = styled.section`
   }
 
 `;
+
 
 const Comics = (props) => {
   const [comics, setComics] = useState([]);
@@ -96,7 +96,7 @@ const Comics = (props) => {
       scrollMove(xParent, xChild);
     }
     fetch(
-      `https://gateway.marvel.com/v1/public/comics?ts=1&limit=40&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_API_HASH}`
+      `https://gateway.marvel.com/v1/public/comics?ts=1&limit=100&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_API_HASH}`
     )
       .then((response) => {
         return response.json();
@@ -109,6 +109,7 @@ const Comics = (props) => {
         console.log(e);
       });
   }, [xParentRef.current, xChildRef.current]);
+
 
   function scrollMove(xParent: HTMLDivElement, xChild: HTMLDivElement): void {
     if (xParent || xChild) {
@@ -128,6 +129,8 @@ const Comics = (props) => {
         });
     }
   }
+
+
 
   return (
     <ComicsSection>

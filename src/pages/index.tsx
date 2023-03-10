@@ -3,8 +3,10 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Series from "../components/Series";
 import Characteres from "../components/Characters";
+import Modal from "../components/Modal"
 import Footer from "../components/Footer";
 import Main from "../components/Main";
+
 import Comics from "../components/Comics"
 
 export default function Home() {
@@ -17,6 +19,7 @@ export default function Home() {
   return (
     <Container>
       <Header/>
+      {/* <Modal/>  */}
       <Main/>
       <Series />
       <Comics/>

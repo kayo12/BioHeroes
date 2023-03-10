@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface ModelCard {
-
+  onClick?: () => void,
   width: string,
   height: string,
   image: string,

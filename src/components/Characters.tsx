@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import Modal from "./Modal";
 import Cards from "./Cards";
 
 const CharacterSection = styled.section`
@@ -9,6 +10,7 @@ const CharacterSection = styled.section`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  margin: 6rem 0;
 
   .Character-Container {
     max-width: 990px;
@@ -48,7 +50,7 @@ const CharacterSection = styled.section`
   }
 
   .Character-Paging button {
-    cursor:pointer;
+    cursor: pointer;
     text-decoration: none;
     padding: 8px 16px;
     color: #000000;
@@ -63,11 +65,12 @@ const CharacterSection = styled.section`
 
 export default function Characters(props) {
   const [char, setChar] = useState([]);
-  const [pages, setPages] = useState(0)
+  const [pages, setPages] = useState(0);
+  const [mod, setMod] = useState(false)
 
   useEffect(() => {
     fetch(
-      `https://gateway.marvel.com/v1/public/characters?ts=1&limit=150&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_API_HASH}`
+      `https://gateway.marvel.com/v1/public/characters?ts=1&limit=100&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_API_HASH}`
     )
       .then((response) => {
         return response.json();
@@ -81,13 +84,17 @@ export default function Characters(props) {
       });
   }, [pages]);
 
+  const showModal = (current) =>{
+      console.log("Acessando valores" + current.name)
+  }
+
+
   const groups = () => {
-
-
-    let first = pages != 0 ?  Math.abs(8 - (Number(pages * 8))) : 0;
-    let last =  pages != 0 ?  Number(pages * 8): 8;
-
+    let first = pages != 0 ? Math.abs(8 - Number(pages * 8)) : 0;
+    let last = pages != 0 ? Number(pages * 8) : 8;
     let gp = char.slice(first, last).map((current, index) => {
+    
+        
       return (
         <Cards
           key={`${index}`}
@@ -95,6 +102,7 @@ export default function Characters(props) {
           width={"200px"}
           height={"200px"}
           image={current.thumbnail.path + "." + current.thumbnail.extension}
+          onClick={ showModal(current)}
         />
       );
     });
@@ -106,7 +114,7 @@ export default function Characters(props) {
     let group = Math.round(char.length / 8);
     let pading = [...Array(group)].map((_, indx) => {
       return (
-        <button  key={`${indx}_`} onClick={()  => setPages(indx + 1)}>
+        <button key={`${indx}_`} onClick={() => setPages(indx + 1)}>
           {indx + 1}
         </button>
       );
