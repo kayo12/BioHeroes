@@ -46,7 +46,8 @@ const CharacterSection = styled.section`
   .Character-Paging {
     display: flex;
     justify-content: center;
-    width: 100%;
+
+    max-width: 100%;
   }
 
   .Character-Paging button {
@@ -84,16 +85,31 @@ export default function Characters(props) {
       });
   }, [pages]);
 
-  const showModal = (current) =>{
-      console.log("Acessando valores" + current.name)
+
+  const modalParam = (current?: any) =>{
+    
+    return( 
+        <Modal name={current}/>
+    )
   }
 
+  const showModal = (current: any) =>{
+      console.log("Acessando valores" + JSON.stringify(current))
+      let mod =  document.querySelector("#modal") as HTMLDivElement
+     let close = document.querySelectorAll(".modal-close")[0] as HTMLSpanElement
+     console.log(current.name)
+      modalParam(current.name)
+     mod.style.display = "flex"
+     close.addEventListener("click", () => {
+        mod.style.display = "none"
+     }) 
+
+  }
 
   const groups = () => {
     let first = pages != 0 ? Math.abs(8 - Number(pages * 8)) : 0;
     let last = pages != 0 ? Number(pages * 8) : 8;
     let gp = char.slice(first, last).map((current, index) => {
-    
         
       return (
         <Cards
@@ -102,7 +118,7 @@ export default function Characters(props) {
           width={"200px"}
           height={"200px"}
           image={current.thumbnail.path + "." + current.thumbnail.extension}
-          onClick={ showModal(current)}
+          onClick={() => showModal(current)}
         />
       );
     });
@@ -123,6 +139,8 @@ export default function Characters(props) {
   };
 
   return (
+    <>
+    {modalParam()}
     <CharacterSection>
       <div className="Character-Container">
         <h3 className="Character-Header">Personagens</h3>
@@ -130,5 +148,6 @@ export default function Characters(props) {
         <div className="Character-Paging">{pagingLength()}</div>
       </div>
     </CharacterSection>
+    </>
   );
 }

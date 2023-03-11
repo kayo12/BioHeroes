@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface ModelCard {
-  onClick?: () => void,
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   width: string,
   height: string,
   image: string,
@@ -45,7 +45,7 @@ const Cards = (props: ModelCard) => {
   `;
 
   return (
-    <Card >
+    <Card onClick={props.onClick}>
       <CardBody >
         <p className="CardTitle">{props.title}</p>
       </CardBody>
