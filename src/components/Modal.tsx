@@ -25,8 +25,11 @@ const Modal = (props: DefaultModal) => {
       flex: 0 2 1000px;
       height: 500px;
       background-color: #f3ef83;
-      opacity: 1;
       position: relative;
+      -webkit-animation-name: animatetop;
+      -webkit-animation-duration: 0.4s;
+      animation-name: animatetop;
+      animation-duration: 0.4s;
     }
 
     .modal-close {
@@ -37,8 +40,66 @@ const Modal = (props: DefaultModal) => {
       position: absolute;
       right: 10px;
     }
+
+    .modal-title {
+      text-align: center;
+      color: #000;
+      font-size: 2rem;
+    }
+
+    .flip {
+      position: relative;
+      display: flex;
+      width: 280px;
+      min-height: 300px;
+      justify-content: center;
+      background-color: blueviolet;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-front {
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-front,
+    .flip-back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+
+    .flip-back{
+      transform: rotateY(180deg);
+    }
+    // animação do modal
+
+    @-webkit-keyframes animatetop {
+      from {
+        left: -1200px;
+        opacity: 0;
+      }
+      to {
+        left: 0;
+        opacity: 1;
+      }
+    }
+
+    @keyframes animatetop {
+      from {
+        left: -1200px;
+        opacity: 0;
+      }
+      to {
+        left: 0;
+        opacity: 1;
+      }
+    }
   `;
-  console.log("Valor do modal: " + props.mod);
+  // console.log("Valor do modal: " + props.mod);
   return (
     <ModalDiv id="modal">
       <div className="modal-content">
@@ -46,9 +107,17 @@ const Modal = (props: DefaultModal) => {
         <div className="modal-body">
           {props.mod != null ? (
             <>
-              <p>{props.mod.name}</p>
-              <p>{props.mod.description}</p>
-              <p>{props.mod.description}</p>
+              <span className="modal-title">{props.mod.name}</span>
+              <div className="flip">
+                <div className="flip-front">HISTORIAS</div>
+                <div className="flip-back">
+                  <p>Historia 1</p>
+                  <p>Historia 2</p>
+                  <p>Historia 3</p>
+                  <p>{props.mod.description}</p>
+                  <p>{props.mod.description}</p>
+                </div>
+              </div>
             </>
           ) : (
             "vazio"
