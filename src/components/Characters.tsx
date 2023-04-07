@@ -56,10 +56,13 @@ const CharacterSection = styled.section`
     color: #000000;
     font-weight: bold;
   }
+
+  
   .Character-Paging button:hover {
-    background-color: #ff3700;
+    background-image: linear-gradient(to bottom right, #f84b4b, #f82525);
     color: #fff;
     font-weight: bold;
+    transform: scale(1.2);
   }
 `;
 

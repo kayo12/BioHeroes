@@ -19,6 +19,9 @@ const Cards = (props: ModelCard) => {
     background-size: cover;
     width: ${props.width};
     height: ${props.height};
+    border: none; /* Remover borda do botão */
+    box-shadow: 3px 4px 4px #000000; /* Sombra do botão */
+    border-radius: 5px;
    
   `;
 
