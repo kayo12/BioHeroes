@@ -24,8 +24,8 @@ const Modal = (props: DefaultModal) => {
       display: flex;
       flex-direction: column;
       flex: 0 2 1000px;
-      height: 500px;
-      background-color: #f3ef83;
+      height: 600px;
+      background-image: linear-gradient(to bottom right, #f84b4b, #f82525);
       position: relative;
       -webkit-animation-name: animatetop;
       -webkit-animation-duration: 0.4s;
@@ -63,12 +63,13 @@ const Modal = (props: DefaultModal) => {
       position: relative;
       display: flex;
       width: 280px;
-      max-height: 300px;
+      max-height: 400px;
       justify-content: center;
       background-color: #f9c017;
       transition: transform 0.8s;
       transform-style: preserve-3d;
       cursor: pointer;
+     
     }
 
     .flip:hover {
@@ -113,6 +114,7 @@ const Modal = (props: DefaultModal) => {
       position: absolute;
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
+      padding: 15px;
     }
 
     .flip-back::-webkit-scrollbar{
@@ -160,7 +162,6 @@ const Modal = (props: DefaultModal) => {
         {props.mod != null ? (
           <>
             <span className="modal-title">{props.mod.name}</span>
-            <p>{props.mod.description}</p>
             <div className="modal-body">
               <div className="flip">
                 <div className="flip-front">

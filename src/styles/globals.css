@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@400;500&family=Karla:wght@400;800&family=Roboto+Mono:wght@300&family=Zilla+Slab:wght@500&display=swap');
 
 html,
@@ -5,7 +6,10 @@ body {
   margin: 0;
   padding: 0;
   background-color: #F0E68C;
-  font-family: Gemunu Libre, sans-serif;
+  font-family: 'Gemunu Libre', sans-serif;
+font-family: 'Karla', sans-serif;
+font-family: 'Roboto Mono', monospace;
+font-family: 'Zilla Slab', serif;
 }
 
 * {
