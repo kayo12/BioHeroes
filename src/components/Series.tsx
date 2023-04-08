@@ -16,13 +16,11 @@ const PopSection = styled.section`
   .PopContainer {
     max-width: 980px;
     width: 100%;
-    height: auto;
+    min-height: 550px;
     justify-content: flex-end;
     display: flex;
     align-items: flex-end;
     flex-direction: column;
-
-  
   }
 
   .PopHeader {
@@ -39,8 +37,7 @@ const PopSection = styled.section`
     height: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    padding: 0.8rem;
+    align-items: center;
     flex: 1;
     gap: 20px;
   }
@@ -117,7 +114,7 @@ export default function Series(props?: Series) {
   useEffect(() => {
     const parentRef = Parent_Ref.current;
     const childRef = Child_Ref.current;
-      controlBtn(parentRef, childRef);
+    controlBtn(parentRef, childRef);
 
     fetch(
       `https://gateway.marvel.com/v1/public/series?ts=1&limit=60&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_API_HASH}`
@@ -134,22 +131,19 @@ export default function Series(props?: Series) {
       });
   }, [Parent_Ref, Child_Ref]);
 
-
   function controlBtn(parent: HTMLUListElement, child: HTMLDivElement) {
-      console.log("entrou no if series");
-      document
-        .querySelector<HTMLElement>("#popBtnLeft")
-        .addEventListener("click", () => {
-          parent.scrollLeft += 300
-          console.log("Proximo slide")
-        });
-      document
-        .querySelector<HTMLElement>("#popBtnRight")
-        .addEventListener("click", () => {
-          
-          parent.scrollLeft -= 300
-        });
-    
+    console.log("entrou no if series");
+    document
+      .querySelector<HTMLElement>("#popBtnLeft")
+      .addEventListener("click", () => {
+        parent.scrollLeft += 300;
+        console.log("Proximo slide");
+      });
+    document
+      .querySelector<HTMLElement>("#popBtnRight")
+      .addEventListener("click", () => {
+        parent.scrollLeft -= 300;
+      });
   }
 
   return (
@@ -167,38 +161,42 @@ export default function Series(props?: Series) {
         <div className="PopCarousel">
           <div className="PopDescription">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              sit amet ipsum risus. Fusce et commodo quam. Vestibulum ante ipsum
-              primis in faucibus orci luctus et ultrices posuere cubilia curae;
-              Ut rutrum tortor nec consequat dignissim. Vestibulum tincidunt
-              turpis et nibh convallis, sed convallis justo auctor. Praesent eu
-              posuere orci, nec tempor urna. Donec sollicitudin efficitur metus,
-              vel lobortis augue tempor non. Morbi placerat ac neque et
-              bibendum. Fusce condimentum sem quis eros ultrices, eget egestas
-              mauris condimentum.
+              As séries em quadrinhos da Marvel são um dos maiores tesouros da
+              cultura pop. Desde a sua criação em 1939, a Marvel tem criado
+              algumas das histórias mais icônicas e personagens inesquecíveis
+              que o mundo dos quadrinhos já viu.
             </p>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              sit amet ipsum risus. Fusce et commodo quam. Vestibulum ante ipsum
-              primis in faucibus orci luctus et ultrices posuere cubilia curae;
-              Ut rutrum tortor nec consequat dignissim. Vestibulum tincidunt
-              turpis et nibh convallis, sed convallis justo auctor. Praesent eu
-              posuere orci, nec tempor urna. Donec sollicitudin efficitur metus,
-              vel lobortis augue tempor non. Morbi placerat ac neque et
-              bibendum. Fusce condimentum sem quis eros ultrices, eget egestas
-              mauris condimentum.
+              Uma das séries mais populares da Marvel é &quot;Os
+              Vingadores&quot;, que reúne os maiores heróis da editora em uma
+              única equipe para enfrentar ameaças que nenhum deles poderia
+              enfrentar sozinho. A equipe é composta por personagens como Homem
+              de Ferro, Capitão América, Thor, Hulk e Viúva Negra, entre outros.
             </p>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-              sit amet ipsum risus. Fusce et commodo quam. Vestibulum ante ipsum
-              primis in faucibus orci luctus et ultrices posuere cubilia curae;
-              Ut rutrum tortor nec consequat dignissim. Vestibulum tincidunt
-              turpis et nibh convallis, sed convallis justo auctor. Praesent eu
-              posuere orci, nec tempor urna. Donec sollicitudin efficitur metus,
-              vel lobortis augue tempor non. Morbi placerat ac neque et
-              bibendum. Fusce condimentum sem quis eros ultrices, eget egestas
-              mauris condimentum.
+              Outra série icônica da Marvel é &quot;X-Men&quot;, que conta a
+              história de um grupo de mutantes que lutam para proteger um mundo
+              que os teme e os odeia. Os personagens mais populares dos X-Men
+              incluem Wolverine, Professor Xavier, Ciclope, Tempestade e Jean
+              Grey.
             </p>
+            <p>
+              Além dessas séries, a Marvel também tem uma série de personagens
+              solo que são extremamente populares. O Homem-Aranha, por exemplo,
+              é um dos personagens mais amados da editora, enquanto o Demolidor
+              é conhecido por sua habilidade de lutar contra o crime mesmo sendo
+              cego.
+            </p>
+            <p>
+              A Marvel também é conhecida por seus eventos crossover épicos, que
+              reúnem vários personagens e equipes em uma única história.
+              Exemplos notáveis incluem &quot;Guerra Civil&quot;, que viu os
+              heróis da Marvel se dividirem em dois lados em relação a um
+              projeto de lei de registro de super-heróis, e &quot;Infinity
+              Gauntlet&quot;, que viu o vilão Thanos reunir as seis Joias do
+              Infinito para se tornar um ser onipotente.
+            </p>
+          
           </div>
           <ul className="PopBody" ref={Parent_Ref}>
             {series.map((current, index) => {
@@ -206,9 +204,8 @@ export default function Series(props?: Series) {
                 "." +
                 current.thumbnail.extension !=
                 "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" ? (
-                <li key={`${index}_`} >
+                <li key={`${index}_`}>
                   <Cards
-
                     title={current.title}
                     width={"300px"}
                     height={"400px"}

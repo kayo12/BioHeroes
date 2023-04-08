@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FaRocket } from 'react-icons/fa';
 import { useEffect, useState, useRef } from "react";
 interface DefaultModal {
   mod?: any;
@@ -54,8 +55,8 @@ const Modal = (props: DefaultModal) => {
 
     .modal-title {
       text-align: center;
-      color: #000;
-      font-size: 3rem;
+      color: #ffffff;
+      font-size: 2em;
       font-weight: bolder;
     }
 

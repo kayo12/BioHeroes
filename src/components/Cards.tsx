@@ -34,7 +34,7 @@ const Cards = (props: ModelCard) => {
   
     background-image: linear-gradient(to bottom right, #f84b4b, #f82525);
     &:hover{
-      opacity: 0.9;
+      opacity: 0.7;
     }
 
     .CardTitle {

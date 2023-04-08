@@ -43,6 +43,10 @@ const CharacterSection = styled.section`
     display: flex;
   }
 
+  .Character-description{
+    padding: 1rem;
+  }
+
   .Character-Paging {
     display: flex;
     justify-content: center;
@@ -57,7 +61,6 @@ const CharacterSection = styled.section`
     font-weight: bold;
   }
 
-  
   .Character-Paging button:hover {
     background-image: linear-gradient(to bottom right, #f84b4b, #f82525);
     color: #fff;
@@ -101,7 +104,6 @@ export default function Characters(props) {
     let first = pages != 0 ? Math.abs(8 - Number(pages * 8)) : 0;
     let last = pages != 0 ? Number(pages * 8) : 8;
     let gp = char.slice(first, last).map((current, index) => {
-      
       return (
         <>
           <Modal key={`${index}_`} mod={mod} />
@@ -138,6 +140,19 @@ export default function Characters(props) {
       <CharacterSection>
         <div className="Character-Container">
           <h3 className="Character-Header">Personagens</h3>
+          <div>
+            <p className="Character-description">
+              A Marvel é famosa por sua grande variedade de super-heróis e
+              vilões. Seus personagens possuem uma ampla gama de poderes,
+              origens e personalidades distintas que atraem fãs de todas as
+              idades e interesses. Desde seres sobre-humanos até cientistas
+              brilhantes, a Marvel criou uma vasta galeria de personagens que
+              continuam a inspirar e entreter pessoas em todo o mundo. Dos
+              heróis mais populares, como o Homem-Aranha e o Capitão América,
+              aos vilões mais icônicos, como o Doutor Destino e o Duende Verde,
+              a Marvel tem algo para todos.
+            </p>
+          </div>
           <div className="Character-Body">{groups()}</div>
           <div className="Character-Paging">{pagingLength()}</div>
         </div>
