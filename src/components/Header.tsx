@@ -1,5 +1,16 @@
 import styled from "styled-components";
-import { Search } from "./Search";
+
+
+
+const theme = {
+
+  media: { 
+    desktop : `@media (min-width: 1024px)`,
+    tablet : `@media (max-width: 1023px) and (min-width: 768px)`,
+    mobile: `@media (max-width: 767px)`
+  }
+}
+
 
 const NavHeader = styled.header`
   width: 100%;
@@ -43,6 +54,8 @@ const NavHeader = styled.header`
     border-radius: 10px;
     list-style-type: none;
   }
+
+
 `;
 
 export default function Header(props) {
@@ -58,7 +71,6 @@ export default function Header(props) {
           <li className="NavLink">Quadrinhos</li>
           <li className="NavLink">Ranking</li>
         </ul>
-        <Search />
       </nav>
     </NavHeader>
   );

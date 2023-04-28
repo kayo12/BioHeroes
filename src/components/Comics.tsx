@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import Image from "next/image";
 import styled from "styled-components";
 import imageComics from "../../public/comics2.jpg";
 import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi";

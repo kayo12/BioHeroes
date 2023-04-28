@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 interface ModelCard {
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   width: string,

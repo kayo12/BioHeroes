@@ -1,7 +1,9 @@
 import styled from "styled-components";
-import { FaRocket } from 'react-icons/fa';
+import imageEvent from "../../public/eventos_mv.jpg";
 import { useEffect, useState, useRef } from "react";
+
 interface DefaultModal {
+  img?: string;
   mod?: any;
   creaters?: string;
   description?: string;
@@ -66,12 +68,13 @@ const Modal = (props: DefaultModal) => {
       width: 280px;
       max-height: 400px;
       justify-content: center;
-      background-color: #f9c017;
       transition: transform 0.8s;
       transform-style: preserve-3d;
       cursor: pointer;
-     
+      background-color: #FFF;
     }
+
+
 
     .flip:hover {
       transform: rotateY(180deg);

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import styled from "styled-components";
 import Modal from "./Modal";
 import Cards from "./Cards";
@@ -43,7 +44,7 @@ const CharacterSection = styled.section`
     display: flex;
   }
 
-  .Character-description{
+  .Character-description {
     padding: 1rem;
   }
 
@@ -73,10 +74,13 @@ export default function Characters(props) {
   const [char, setChar] = useState([]);
   const [pages, setPages] = useState(0);
   const [mod, setMod] = useState(null);
-
+  const [loading, setLoading] = useState(false);
+  const [limit, setLimit] = useState(0);
+  const [pageAll, setPageAll] = useState(1);
   useEffect(() => {
+    setLoading(true);
     fetch(
-      `https://gateway.marvel.com/v1/public/characters?ts=1&limit=100&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_API_HASH}`
+      `https://gateway.marvel.com/v1/public/characters?ts=1&limit=100&offset=${limit}&apikey=${process.env.NEXT_PUBLIC_API_KEY}&hash=${process.env.NEXT_PUBLIC_API_HASH}`
     )
       .then((response) => {
         return response.json();
@@ -88,7 +92,8 @@ export default function Characters(props) {
       .catch((e) => {
         console.log(e);
       });
-  }, [pages]);
+    setLoading(false);
+  }, [pages, limit]);
 
   const showModal = (current: any) => {
     let mod = document.querySelector("#modal") as HTMLDivElement;
@@ -103,6 +108,7 @@ export default function Characters(props) {
   const groups = () => {
     let first = pages != 0 ? Math.abs(8 - Number(pages * 8)) : 0;
     let last = pages != 0 ? Number(pages * 8) : 8;
+    console.log(char.length)
     let gp = char.slice(first, last).map((current, index) => {
       return (
         <>
@@ -123,15 +129,28 @@ export default function Characters(props) {
   };
 
   const pagingLength = () => {
-    let group = Math.round(char.length / 8);
-    let pading = [...Array(group)].map((_, indx) => {
-      return (
-        <button key={`${indx}_`} onClick={() => setPages(indx + 1)}>
-          {indx + 1}
-        </button>
-      );
-    });
-    return pading;
+    let group = Math.round(char.length / 11);
+    let pading = loading ? (
+      <div>Loading...</div>
+    ) : (
+      [...Array(group)].map((_, indx) => {
+        
+        return (
+          <button key={`${indx}_`} onClick={() => setPages(indx + 1)}>
+            {indx + pageAll}
+          </button>
+
+        );
+      })
+    );
+    return (
+      <>
+        <button onClick={() => setLimit(limit - 200)}>Previous </button>
+        {pading}
+        <button>...{limit}</button>
+        <button onClick={() => setLimit(limit + 200)}> Next </button>{" "}
+      </>
+    );
   };
 
   return (
