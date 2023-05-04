@@ -78,7 +78,6 @@ const ComicsSection = styled.section`
     object-fit: cover;
     cursor: pointer;
   }
-
 `;
 
 
@@ -109,7 +108,6 @@ const Comics = (props) => {
       });
   }, [xParentRef.current, xChildRef.current]);
 
-
   function scrollMove(xParent: HTMLDivElement, xChild: HTMLDivElement): void {
     if (xParent || xChild) {
       document
@@ -128,8 +126,6 @@ const Comics = (props) => {
         });
     }
   }
-
-
 
   return (
     <ComicsSection>

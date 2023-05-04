@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import imageEvent from "../../public/eventos_mv.jpg";
-import { useEffect, useState, useRef } from "react";
+import imageEvent from "../../public/guerra_civil.jpg";
+import imageEvent2 from "../../public/hq_comics.jpg";
+import imageEvent3 from "../../public/marvel-studios.jpg";
 
 interface DefaultModal {
   img?: string;
@@ -58,7 +59,7 @@ const Modal = (props: DefaultModal) => {
     .modal-title {
       text-align: center;
       color: #ffffff;
-      font-size: 2em;
+      font-size: 3em;
       font-weight: bolder;
     }
 
@@ -71,10 +72,8 @@ const Modal = (props: DefaultModal) => {
       transition: transform 0.8s;
       transform-style: preserve-3d;
       cursor: pointer;
-      background-color: #FFF;
+      background-color: #ffd700;
     }
-
-
 
     .flip:hover {
       transform: rotateY(180deg);
@@ -84,14 +83,45 @@ const Modal = (props: DefaultModal) => {
       transition: transform 0.6s;
       transform-style: preserve-3d;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
+      
+    }
+
+    #event{
+      background: no-repeat url(${imageEvent.src}) center;
+      background-size: cover;
+    }
+
+    #comics{
+      background: no-repeat url(${imageEvent2.src}) center;
+    }
+
+    #series{
+      background: no-repeat url(${imageEvent3.src}) center;
+      background-size: cover;
+    }
+
+    .flip-front::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 50%;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 50) 0%,
+        rgba(0, 0, 0, 0) 100%
+      );
     }
 
     .flip-front > span,
     .flip-back > p {
-      color: #000;
-      font-weight: bolder;
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 50px;
+      z-index: 1;
     }
 
     .flip-front > span {
@@ -99,16 +129,15 @@ const Modal = (props: DefaultModal) => {
     }
 
     .flip-back > span {
-      
-    background-image: linear-gradient(to bottom right, #f84b4b, #f82525);
-    border-radius: 4px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    padding: 3px;
-    margin: 5px;
-    border: none; /* Remover borda do botão */
-    box-shadow: 0px 3px 0px #000000; /* Sombra do botão */
+      background-image: linear-gradient(to bottom right, #f84b4b, #f82525);
+      border-radius: 4px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      padding: 3px;
+      margin: 5px;
+      border: none; /* Remover borda do botão */
+      box-shadow: 0px 3px 0px #000000; /* Sombra do botão */
     }
 
     .flip-front,
@@ -121,10 +150,10 @@ const Modal = (props: DefaultModal) => {
       padding: 15px;
     }
 
-    .flip-back::-webkit-scrollbar{
+    .flip-back::-webkit-scrollbar {
       width: 12px;
     }
-    .flip-back::-webkit-scrollbar-thumb{
+    .flip-back::-webkit-scrollbar-thumb {
       background-image: linear-gradient(to bottom right, #0c0c0c, #000000);
       border-radius: 3px;
     }
@@ -133,7 +162,6 @@ const Modal = (props: DefaultModal) => {
       overflow-y: auto;
       transform: rotateY(180deg);
     }
-    // animação do modal
 
     @-webkit-keyframes animatetop {
       from {
@@ -168,7 +196,7 @@ const Modal = (props: DefaultModal) => {
             <span className="modal-title">{props.mod.name}</span>
             <div className="modal-body">
               <div className="flip">
-                <div className="flip-front">
+                <div className="flip-front" id="event">
                   <span>EVENTOS</span>
                 </div>
                 <div className="flip-back">
@@ -179,12 +207,11 @@ const Modal = (props: DefaultModal) => {
                   ) : (
                     <p>SEM REGISTROS</p>
                   )}
-                
                 </div>
               </div>
               <div className="flip">
-                <div className="flip-front">
-                  <span>HISTORIAS</span>
+                <div className="flip-front" id="comics">
+                  <span>HQs</span>
                 </div>
                 <div className="flip-back">
                   {props.mod.stories && props.mod.stories.items ? (
@@ -194,11 +221,10 @@ const Modal = (props: DefaultModal) => {
                   ) : (
                     <p>SEM REGISTROS</p>
                   )}
-                 
                 </div>
               </div>
               <div className="flip">
-                <div className="flip-front">
+                <div className="flip-front" id="series">
                   <span>SERIES</span>
                 </div>
                 <div className="flip-back">
@@ -209,7 +235,6 @@ const Modal = (props: DefaultModal) => {
                   ) : (
                     <p>SEM REGISTROS</p>
                   )}
-                 
                 </div>
               </div>
             </div>

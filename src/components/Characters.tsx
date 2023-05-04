@@ -129,7 +129,7 @@ export default function Characters(props) {
   };
 
   const pagingLength = () => {
-    let group = Math.round(char.length / 11);
+    let group = Math.round(char.length / 9);
     let pading = loading ? (
       <div>Loading...</div>
     ) : (
