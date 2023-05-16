@@ -40,6 +40,7 @@ const ComicsSection = styled.section`
     cursor: pointer;
     opacity: 0.7;
     color: #fff;
+    z-index: 2;
     background-color: #000;
     &:hover {
       opacity: 0.9;
@@ -69,17 +70,57 @@ const ComicsSection = styled.section`
     height: 100%;
     width: 100%;
     padding: 0 5px;
+    position: relative;
+    z-index: 1;
   }
 
   .Comics-Front img {
-    min-width: 290px;
+    min-width: 340px;
     width: 100%;
     max-height: 100%;
     object-fit: cover;
+    object-position: center; /* Centraliza a imagem na div */
     cursor: pointer;
   }
-`;
 
+  .Tooltip-text{
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+
+  }
+
+  .Tooltip .Tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: #ffffff;
+    color: #000000;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 3px;
+   
+    z-index: 1;
+  }
+
+  .Tooltip .Tooltip-text::after{
+    content: " ";
+    position: absolute;
+    top: 100%;
+    right: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
+
+  .Tooltip:hover .Tooltip-text {
+    visibility: visible;
+    display: block;
+  }
+
+  
+
+`;
 
 const Comics = (props) => {
   const [comics, setComics] = useState([]);
@@ -142,14 +183,16 @@ const Comics = (props) => {
           return current.thumbnail.path + "." + current.thumbnail.extension !=
             "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" ? (
             <div className="Comics-Container" ref={xChildRef}>
-              <div className="Comics-Front">
+              <div className="Comics-Front Tooltip">
                 <img
                   src={
                     current.thumbnail.path + "." + current.thumbnail.extension
                   }
-                  alt="Revista em quadrinhos"
+                  alt={current.title}
                 />
-                
+
+                  <span className="Tooltip-text">{current.title}</span>
+ 
               </div>
             </div>
           ) : (

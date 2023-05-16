@@ -190,7 +190,6 @@ const Modal = (props: DefaultModal) => {
     <ModalDiv id="modal">
       <div className="modal-content">
         <span className="modal-close">&times;</span>
-
         {props.mod != null ? (
           <>
             <span className="modal-title">{props.mod.name}</span>
