@@ -4,7 +4,7 @@ import imageComics from "../../public/comics2.jpg";
 import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi";
 
 const ComicsSection = styled.section`
-  height: 90vh;
+  height: calc(100vh + 60px);
   max-width: 100vw;
   width: 100%;
   background-image: url(${imageComics.src});
@@ -13,9 +13,21 @@ const ComicsSection = styled.section`
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-blend-mode: saturation;
+  flex-direction: column;
   position: relative;
   display: flex;
   align-items: center;
+
+  .Comics-title {
+    background-color: #fff;
+    font-size: 1.5rem;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    opacity: 0.9;
+  }
 
   .Comics-carousel {
     width: 100%;
@@ -83,32 +95,38 @@ const ComicsSection = styled.section`
     cursor: pointer;
   }
 
-  .Tooltip-text{
-    position: absolute; 
-    top: 50%;
-    left: 50%;
-
+  .Tooltip-text {
+    position: absolute;
+    top: 10%;
+    left: 10%;
   }
 
   .Tooltip .Tooltip-text {
     visibility: hidden;
-    width: 120px;
-    background-color: #ffffff;
-    color: #000000;
+    width: 220px;
+    background-color: #000000;
+    color: #ffffff;
     text-align: center;
     border-radius: 6px;
     padding: 5px 3px;
-   
     z-index: 1;
   }
 
-  .Tooltip .Tooltip-text::after{
+
+  .Tooltip-text > span{
+    text-transform: uppercase;
+  }
+  .Tooltip-detail > li{
+    text-transform: capitalize;
+  }
+
+  .Tooltip .Tooltip-text::after {
     content: " ";
     position: absolute;
     top: 100%;
-    right: 50%;
+    left: 50%;
     margin-left: -5px;
-    border-width: 5px;
+    border-width: 10px;
     border-style: solid;
     border-color: black transparent transparent transparent;
   }
@@ -117,9 +135,6 @@ const ComicsSection = styled.section`
     visibility: visible;
     display: block;
   }
-
-  
-
 `;
 
 const Comics = (props) => {
@@ -170,6 +185,9 @@ const Comics = (props) => {
 
   return (
     <ComicsSection>
+      <div className="Comics-title">
+        <h3> HQs: conheça algumas das nossas historias em quadrinhos. </h3>
+      </div>
       <div className="Comics-carousel" ref={xParentRef}>
         <div className="Comics-Controll">
           <button className="Comics-btnLeft" id="btnLeft">
@@ -179,6 +197,7 @@ const Comics = (props) => {
             <HiOutlineChevronRight />
           </button>
         </div>
+
         {comics.map((current, index) => {
           return current.thumbnail.path + "." + current.thumbnail.extension !=
             "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg" ? (
@@ -190,9 +209,18 @@ const Comics = (props) => {
                   }
                   alt={current.title}
                 />
-
-                  <span className="Tooltip-text">{current.title}</span>
- 
+                <div className="Tooltip-text">
+                  <span>{current.title}</span>
+                  <ul className="Tooltip-detail">
+                    {current.creators.items.map((items, i) => {
+                      return (
+                        <li key={i}>
+                          {items.role}: {items.name}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               </div>
             </div>
           ) : (
