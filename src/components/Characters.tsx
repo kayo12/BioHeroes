@@ -58,11 +58,11 @@ const CharacterSection = styled.section`
     cursor: pointer;
     text-decoration: none;
     padding: 8px 16px;
-    color: #000000;
     font-weight: bold;
   }
 
-  .Character-Paging button:hover {
+ 
+  .Clicked {
     background-image: linear-gradient(to bottom right, #f84b4b, #f82525);
     color: #fff;
     font-weight: bold;
@@ -77,6 +77,8 @@ export default function Characters(props) {
   const [loading, setLoading] = useState(false);
   const [limit, setLimit] = useState(0);
   const [pageAll, setPageAll] = useState(1);
+  const [clicked, setClicked] = useState<[boolean,number]>([false,0]);
+
   useEffect(() => {
     setLoading(true);
     fetch(
@@ -108,7 +110,7 @@ export default function Characters(props) {
   const groups = () => {
     let first = pages != 0 ? Math.abs(8 - Number(pages * 8)) : 0;
     let last = pages != 0 ? Number(pages * 8) : 8;
-    console.log(char.length)
+    console.log(char.length);
     let gp = char.slice(first, last).map((current, index) => {
       return (
         <>
@@ -124,8 +126,14 @@ export default function Characters(props) {
         </>
       );
     });
-
     return gp;
+  };
+
+  const handlerClick = (indx) => {
+    console.log("HandlerClick: ")
+    setPages(indx + 1);
+   clicked ?  setClicked([true, indx]): setClicked([false,indx])
+   console.log(clicked[0] + ':' +clicked[1])
   };
 
   const pagingLength = () => {
@@ -134,18 +142,21 @@ export default function Characters(props) {
       <div>Loading...</div>
     ) : (
       [...Array(group)].map((_, indx) => {
-        
         return (
-          <button key={`${indx}_`} onClick={() => setPages(indx + 1)}>
-            {indx + pageAll}
+          <button
+            className={clicked[0] && clicked[1] === indx ? "Clicked" : ""}
+            onClick={() => handlerClick(indx)}
+            key={`${indx}_`}
+          >
+            {limit >= 200 ? ((limit / 200) * 10 ) + indx + pageAll: indx + pageAll }
           </button>
-
         );
       })
     );
+
     return (
       <>
-        <button onClick={() => setLimit(limit - 200)}>Previous </button>
+        <button onClick={() => setLimit(limit > 0 ? limit - 200 : 0)}>Previous </button>
         {pading}
         <button>...{limit}</button>
         <button onClick={() => setLimit(limit + 200)}> Next </button>{" "}
