@@ -68,6 +68,9 @@ const CharacterSection = styled.section`
     font-weight: bold;
     transform: scale(1.2);
   }
+
+  
+
 `;
 
 export default function Characters(props) {
@@ -148,6 +151,7 @@ export default function Characters(props) {
             onClick={() => handlerClick(indx)}
             key={`${indx}_`}
           >
+            {/* condição para mostrar a quantidade de paginas exibidas */}
             {limit >= 200 ? ((limit / 200) * 10 ) + indx + pageAll: indx + pageAll }
           </button>
         );
@@ -167,7 +171,7 @@ export default function Characters(props) {
   return (
     <>
       {/* {modalParam()} */}
-      <CharacterSection>
+      <CharacterSection id="chacters">
         <div className="Character-Container">
           <h3 className="Character-Header">Personagens</h3>
           <div>

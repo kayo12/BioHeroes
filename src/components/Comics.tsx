@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import imageComics from "../../public/comics2.jpg";
-import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi";
+import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi"; 
 
 const ComicsSection = styled.section`
   height: calc(100vh + 60px);
@@ -184,7 +184,7 @@ const Comics = (props) => {
   }
 
   return (
-    <ComicsSection>
+    <ComicsSection id="comics">
       <div className="Comics-title">
         <h3> HQs: conheça algumas das nossas historias em quadrinhos. </h3>
       </div>

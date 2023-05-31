@@ -147,7 +147,7 @@ export default function Series(props?: Series) {
   }
 
   return (
-    <PopSection>
+    <PopSection id="series" >
       <div className="PopContainer">
         <h3 className="PopHeader">Séries em quadrinhos </h3>
         <div className="PopControl">

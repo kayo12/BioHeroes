@@ -14,6 +14,7 @@ export default function Home() {
     width: 100vw;
     height: 100vh;
     max-width: 100%;
+    scroll-behavior: smooth;
   `;
 
   return (

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import Link from "next/link"
 
 
 const theme = {
@@ -49,10 +49,16 @@ const NavHeader = styled.header`
 
   .NavLink {
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.5rem;
     padding: 0.5rem 1rem;
     border-radius: 10px;
     list-style-type: none;
+    
+  }
+
+  .NavLink > a {
+    color: #000;
+    text-decoration: none;
   }
 
 
@@ -66,10 +72,9 @@ export default function Header(props) {
           <span>BIOHEROES</span>
         </div>
         <ul className="NavList">
-          <li className="NavLink">Personagens</li>
-          <li className="NavLink">Séries</li>
-          <li className="NavLink">Quadrinhos</li>
-          <li className="NavLink">Ranking</li>
+        <li className="NavLink"><Link href="#series" scroll={false}>Séries</Link></li>
+          <li className="NavLink"><Link href="#comics" scroll={false}>Quadrinhos</Link></li>
+          <li className="NavLink"><Link href="#chacters" scroll={false}>Personagens</Link></li>
         </ul>
       </nav>
     </NavHeader>
