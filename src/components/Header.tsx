@@ -72,9 +72,9 @@ export default function Header(props) {
           <span>BIOHEROES</span>
         </div>
         <ul className="NavList">
-        <li className="NavLink"><Link href="#series" scroll={false}>Séries</Link></li>
-          <li className="NavLink"><Link href="#comics" scroll={false}>Quadrinhos</Link></li>
-          <li className="NavLink"><Link href="#chacters" scroll={false}>Personagens</Link></li>
+        <li className="NavLink"><Link href="#series" scroll={false} rel="noreferrer">Séries</Link></li>
+          <li className="NavLink"><Link href="#comics" scroll={false} rel="noreferrer">Quadrinhos</Link></li>
+          <li className="NavLink"><Link href="#chacters" scroll={false} rel="noreferrer">Personagens</Link></li>
         </ul>
       </nav>
     </NavHeader>
