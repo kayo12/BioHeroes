@@ -43,7 +43,7 @@ export default function Header() {
       <Footer>
           <ul className="Media-Icons">
             <li><a href="https://github.com/kayo12" target="_blank" rel="noreferrer" title="GitHub"><GoMarkGithub/></a></li>
-            <li><a href="https://www.linkedin.com/in/kayohcampos/" target="_blank" rel="noreferrer" title="Linkedin"><FaLinkedin/></a></li>
+            <li><a href="https://github.com/kayo12/bioheroes" target="_blank" rel="noreferrer" title="Linkedin"><FaLinkedin/></a></li>
           </ul>
         <CopyRight>
           Copyright {date.getFullYear()}
