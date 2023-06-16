@@ -28,32 +28,50 @@ export default function Home() {
   `;
 
   const CheckElements = (section) => {
-      var sec = section.getBoundingClientRect();
-     
-      return(
-      sec.top >= 0 &&
+    var sec = section.getBoundingClientRect();
+    console.log({
+      top: sec.top <= 0,
+      top_value: sec.top
+    });
+    console.log({
+      left: sec.left >= 0,
+      left_value: sec.left
+    });
+    console.log({
+      bottom: sec.bottom <= (window.innerHeight || document.documentElement.clientHeight),
+      bottom_value: sec.bottom
+    });
+    console.log({
+      right: sec.right <= (window.innerWidth || document.documentElement.clientWidth),
+      right_value: sec.right
+    });
+
+    return (
+      sec.top <= 0 &&
       sec.left >= 0 &&
       sec.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
       sec.right <= (window.innerWidth || document.documentElement.clientWidth)
-    ) 
+    )
   }
 
   function ShowSection() {
+    console.log("ShowSection chamado");
+
     let section = document.querySelectorAll('section');
-    section.forEach((current, index) =>{
+    section.forEach((current, index) => {
       if (CheckElements(current)) {
-          current.classList.add("ShowDiv");
-          console.log("Entrou no SHOWSECTION")
+        current.classList.add("ShowDiv");
+        console.log("Entrou no SHOWSECTION")
       }
     })
   }
 
   useEffect(() => {
     window.addEventListener('scroll', ShowSection);
-    // return () => {
-    //   window.removeEventListener('scroll', ShowSection)
-    // }
-  },[])
+    return () => {
+      window.removeEventListener('scroll', ShowSection)
+    }
+  }, [])
 
   return (
     <Container>
