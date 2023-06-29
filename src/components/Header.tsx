@@ -59,9 +59,13 @@ const NavHeader = styled.header`
   .NavLink > a {
     color: #000;
     text-decoration: none;
+    transition: color 1s, font-size 1s;
   }
 
-
+  .NavLink > a:hover{
+    color: red;
+    font-size: 1.8rem;
+  }
 `;
 
 export default function Header(props) {

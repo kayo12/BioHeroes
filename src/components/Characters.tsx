@@ -115,6 +115,7 @@ export default function Characters(props) {
     let last = pages != 0 ? Number(pages * 8) : 8;
     console.log(char.length);
     let gp = char.slice(first, last).map((current, index) => {
+      console.log(current)
       return (
         <>
           <Modal key={`${index}_`} mod={mod} />

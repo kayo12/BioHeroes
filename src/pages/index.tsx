@@ -29,22 +29,7 @@ export default function Home() {
 
   const CheckElements = (section) => {
     var sec = section.getBoundingClientRect();
-    console.log({
-      top: sec.top <= 0,
-      top_value: sec.top
-    });
-    console.log({
-      left: sec.left >= 0,
-      left_value: sec.left
-    });
-    console.log({
-      bottom: sec.bottom <= (window.innerHeight || document.documentElement.clientHeight),
-      bottom_value: sec.bottom
-    });
-    console.log({
-      right: sec.right <= (window.innerWidth || document.documentElement.clientWidth),
-      right_value: sec.right
-    });
+   
 
     return (
       sec.top <= 0 &&
