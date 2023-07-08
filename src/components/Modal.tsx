@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import imageEvent from "../../public/guerra_civil.jpg";
-import imageEvent2 from "../../public/hq_comics.jpg";
 import imageEvent3 from "../../public/marvel-studios.jpg";
+import { BiChevronUp, BiChevronDown } from "react-icons/bi";
+
 
 interface DefaultModal {
   img?: string;
@@ -77,18 +77,22 @@ const ModalDiv = styled.div<{ name: any }>`
     color: #ffffff;
     font-size: 3em;
     font-weight: bolder;
+    text-shadow: 1px 1px 2px #000, 2px 2px 4px #000, 3px 3px 6px #000;
+
   }
 
   .flip {
     position: relative;
     display: flex;
-    width: 280px;
+    min-width: 300px;
     max-height: 400px;
     justify-content: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
+    perspective: 100px;
     cursor: pointer;
-    background-color: #ffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
   }
 
   .flip:hover {
@@ -102,26 +106,20 @@ const ModalDiv = styled.div<{ name: any }>`
     align-items: flex-end;
     justify-content: center;
     z-index: 9999;
+    border-radius: 20px;
   }
 
-  #event {
+  #imgFront {
     background: url("${(props) =>
     props.mod ? props.mod.thumbnail.path + "." + props.mod.thumbnail.extension : ""}") no-repeat;
     background-size: cover;
   }
 
-  #event:hover
- 
-
-  .flip-front::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 50%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 50) 0%, rgba(0, 0, 0, 0) 100%);
+  #imgBack {
+   
   }
+
+ 
 
   .flip-front > span,
   .flip-back > p {
@@ -168,17 +166,75 @@ const ModalDiv = styled.div<{ name: any }>`
     overflow-y: auto;
     transform: rotateY(180deg);
     z-index: 9999;
+    
   }
 
   .modal-description_list{
     padding:  0 20px;
-    flex: 0 1 400px;
+    flex: auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-evenly;
+    align-items: ;
+    
   }
+
   .description-list_body{
-   
+    text-shadow: 1px 1px 2px #000, 2px 2px 4px #000, 3px 3px 6px #000;
+
+   display: flex;
+   height: auto;
+   flex: auto;
+   justify-content: flex-start;
+   align-items: flex-start;
+   flex-direction: column;
   }
-  .description-list_body  li {
+
+  .description-list_body  > li , .description-dropdown ul li{
+    list-style-type: none;
+  }
+
+
+  .description-dropdown ul li{
+    line-height: 1rem;
+  }
+
+  .description-dropdown{
     list-style-type: none
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: column nowrap;
+  }
+
+  .head-dropdown{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0.2rem;
+    width: 100%;
+    background-image: linear-gradient(to bottom right,#f84b4b,#f82525);
+    cursor: pointer;
+    margin: 2px 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+  }
+
+  .list-dropdown{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    
+  }
+
+  .list-dropdown li{
+    background: #fff;
+    color: #000;
+    font-weight: bolder;
+    padding: 0.2rem;
+    border-radius: 5px;
+    margin: 1px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+
   }
 
   @-webkit-keyframes animatetop {
@@ -204,7 +260,41 @@ const ModalDiv = styled.div<{ name: any }>`
   }
 `;
 
+
 const Modal = (props: DefaultModal) => {
+
+  const eventRef = useRef(null);
+  const hqRef = useRef(null);
+  const seriesRef = useRef(null);
+  
+  const handlerClick = (element) =>{
+    console.log(element.target.id);
+
+    if(element.target && element.target.id == "myEvents"){
+        console.log("Entrou no myEvents");
+
+        eventRef.current.style.display = handlerCheck(eventRef.current.style.display)
+    }
+
+    if(element.target && element.target.id == "myHqs"){
+      console.log("Entrou no myHQs");
+      hqRef.current.style.display = handlerCheck(hqRef.current.style.display)
+    }
+
+    if(element.target && element.target.id == "mySeries"){
+      console.log("Entrou no mySeries");
+      seriesRef.current.style.display =  handlerCheck(seriesRef.current.style.display)
+    }
+
+  } 
+
+  const handlerCheck = (current) => {
+      if(current === "none"){
+        return "flex"
+      }
+    return "none"  
+  }
+
   console.log("Valor do modal props: " + props.mod);
   return (
     <ModalDiv id="modal" mod={props.mod}>
@@ -215,16 +305,10 @@ const Modal = (props: DefaultModal) => {
             <span className="modal-title">{props.mod.name}</span>
             <div className="modal-body">
               <div className="flip">
-                <div className="flip-front" id="event">
+                <div className="flip-front" id="imgFront">
                 </div>
-                <div className="flip-back">
-                  {props.mod.events && props.mod.events.items ? (
-                    props.mod.events.items.map((current, i) => {
-                      return <span key={i}> {current.name}</span>;
-                    })
-                  ) : (
-                    <p>SEM REGISTROS</p>
-                  )}
+                <div className="flip-back" id="imgBack">
+                  {/* Inserir alguma coisa aqui */}
                 </div>
               </div>
               <div className="modal-description_list">
@@ -233,11 +317,55 @@ const Modal = (props: DefaultModal) => {
                   <li>SOBRE O PERSONAGEM: {props.mod.description}</li>
                 </ul>
                 <div className="description-dropdown">
-                  <div>
-                    
+                  <div className="head-dropdown" id="myEvents" onClick={(event) => handlerClick(event)}>
+                    <span className="title-dropdown" >
+                      Eventos
+                    </span>
+                    <BiChevronUp />
                   </div>
+                  <ul className="list-dropdown"  ref={eventRef}>
+                    {props.mod.events && props.mod.events.items ? (
+                      props.mod.events.items.map((current, i) => {
+                        return <li key={i}> {current.name}</li>;
+                      })
+                    ) : (
+                      <p>SEM REGISTROS</p>
+                    )}
+                  </ul>
+                  <div className="head-dropdown" id="myHqs" onClick={(event) => handlerClick(event)}>
+                    <span className="title-dropdown">
+                      HQs
+                    </span>
+                    <BiChevronUp />
+                  </div>
+                  <ul className="list-dropdown" ref={hqRef}>
+                    {props.mod.events && props.mod.events.items ? (
+                      props.mod.stories.items.map((current, i) => {
+                        return <li key={i}> {current.name}</li>;
+                      })
+                    ) : (
+                      <p>SEM REGISTROS</p>
+                    )}
+                  </ul>
+                  <div className="head-dropdown" id="mySeries" onClick={(event) => handlerClick(event)}>
+                    <span className="title-dropdown">
+                      Series
+                    </span>
+                    <BiChevronUp />
+                  </div>
+                  <ul className="list-dropdown" ref={seriesRef}>
+                    {props.mod.events && props.mod.events.items ? (
+                      props.mod.series.items.map((current, i) => {
+                        return <li key={i}> {current.name}</li>;
+                      })
+                    ) : (
+                      <p>SEM REGISTROS</p>
+                    )}
+                  </ul>
+                  <hr />
                 </div>
               </div>
+
             </div>
           </>
         ) : (

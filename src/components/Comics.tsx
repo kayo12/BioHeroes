@@ -1,10 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import imageComics from "../../public/comics2.jpg";
-import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi"; 
+import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi";
 
 const ComicsSection = styled.section`
-  height: calc(100vh + 60px);
+  height: calc(100vh + 80px);
   max-width: 100vw;
   width: 100%;
   background-image: url(${imageComics.src});
@@ -64,7 +64,7 @@ const ComicsSection = styled.section`
   }
 
   .Comics-Container {
-    height: 80%;
+    height: 65%;
     width: 470px;
     display: flex;
     justify-content: center;
@@ -90,7 +90,7 @@ const ComicsSection = styled.section`
     min-width: 340px;
     width: 100%;
     max-height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center; /* Centraliza a imagem na div */
     cursor: pointer;
   }
