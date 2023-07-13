@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import imageEvent3 from "../../public/marvel-studios.jpg";
+import imageMarvel from "../../public/marvel-studios.jpg";
 import { BiChevronUp, BiChevronDown } from "react-icons/bi";
 
 
@@ -106,19 +106,11 @@ const ModalDiv = styled.div<{ name: any }>`
     align-items: flex-end;
     justify-content: center;
     z-index: 9999;
-    border-radius: 20px;
-  }
-
-  #imgFront {
     background: url("${(props) =>
-    props.mod ? props.mod.thumbnail.path + "." + props.mod.thumbnail.extension : ""}") no-repeat;
-    background-size: cover;
+      props.mod ? props.mod.thumbnail.path + "." + props.mod.thumbnail.extension : ""}") no-repeat;
+      background-size: cover;
+    
   }
-
-  #imgBack {
-   
-  }
-
  
 
   .flip-front > span,
@@ -132,17 +124,7 @@ const ModalDiv = styled.div<{ name: any }>`
     font-size: 1.7rem;
   }
 
-  .flip-back > span {
-    background-image: linear-gradient(to bottom right, #f84b4b, #f82525);
-    border-radius: 4px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    padding: 3px;
-    margin: 5px;
-    border: none; /* Remover borda do botão */
-    box-shadow: 0px 3px 0px #000000; /* Sombra do botão */
-  }
+
 
   .flip-front,
   .flip-back {
@@ -152,21 +134,40 @@ const ModalDiv = styled.div<{ name: any }>`
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     padding: 15px;
+    border-radius: 20px;
+    color: #000;
   }
 
-  .flip-back::-webkit-scrollbar {
-    width: 12px;
-  }
-  .flip-back::-webkit-scrollbar-thumb {
-    background-image: linear-gradient(to bottom right, #0c0c0c, #000000);
-    border-radius: 3px;
-  }
 
   .flip-back {
-    overflow-y: auto;
+    background: url("${imageMarvel.src}") no-repeat center;
+    background-size: cover;
     transform: rotateY(180deg);
-    z-index: 9999;
-    
+    border: 2px solid #fff;
+    position: retaltive;
+  }
+
+  .flip-back > span {
+    border-radius: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-style: italic;
+    border: none; /* Remover borda do botão */
+    font-size: 1.4rem;
+  }
+
+  .flip-back::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5); /* Define a cor de sobreposição com transparência */
+    backdrop-filter: blur(1px); /* Aplica o efeito de desfoque */
+    border-radius: 20px;
   }
 
   .modal-description_list{
@@ -308,7 +309,7 @@ const Modal = (props: DefaultModal) => {
                 <div className="flip-front" id="imgFront">
                 </div>
                 <div className="flip-back" id="imgBack">
-                  {/* Inserir alguma coisa aqui */}
+                  <span>BIOHEROES</span>
                 </div>
               </div>
               <div className="modal-description_list">

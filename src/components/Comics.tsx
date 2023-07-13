@@ -99,6 +99,7 @@ const ComicsSection = styled.section`
     position: absolute;
     top: 10%;
     left: 10%;
+
   }
 
   .Tooltip .Tooltip-text {
@@ -116,8 +117,12 @@ const ComicsSection = styled.section`
   .Tooltip-text > span{
     text-transform: uppercase;
   }
+  .ToolTip-detail {
+   
+  }
   .Tooltip-detail > li{
     text-transform: capitalize;
+    list-style-type: none;
   }
 
   .Tooltip .Tooltip-text::after {
