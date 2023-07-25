@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef,useEffect } from "react";
 import styled from "styled-components";
 import imageMarvel from "../../public/marvel-studios.jpg";
 import { BiChevronUp, BiChevronDown } from "react-icons/bi";
@@ -143,7 +143,7 @@ const ModalDiv = styled.div<{ name: any }>`
     background: url("${imageMarvel.src}") no-repeat center;
     background-size: cover;
     transform: rotateY(180deg);
-    border: 2px solid #fff;
+
     position: retaltive;
   }
 
@@ -156,6 +156,7 @@ const ModalDiv = styled.div<{ name: any }>`
     font-style: italic;
     border: none; /* Remover borda do botão */
     font-size: 1.4rem;
+    color: #ffff;
   }
 
   .flip-back::before{
@@ -165,7 +166,7 @@ const ModalDiv = styled.div<{ name: any }>`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.5); /* Define a cor de sobreposição com transparência */
+    background-color: rgba(0, 0, 0, 0.5); /* Define a cor de sobreposição com transparência */
     backdrop-filter: blur(1px); /* Aplica o efeito de desfoque */
     border-radius: 20px;
   }
@@ -263,6 +264,7 @@ const ModalDiv = styled.div<{ name: any }>`
 
 
 const Modal = (props: DefaultModal) => {
+  const [arrow, setArrow] = useState(false)
 
   const eventRef = useRef(null);
   const hqRef = useRef(null);
@@ -273,27 +275,34 @@ const Modal = (props: DefaultModal) => {
 
     if(element.target && element.target.id == "myEvents"){
         console.log("Entrou no myEvents");
-
-        eventRef.current.style.display = handlerCheck(eventRef.current.style.display)
+      let showHandler =   handlerCheck(eventRef.current.style.display).display;
+      if (eventRef?.current) {
+        eventRef.current.style.display = showHandler;
+      }
     }
 
     if(element.target && element.target.id == "myHqs"){
       console.log("Entrou no myHQs");
-      hqRef.current.style.display = handlerCheck(hqRef.current.style.display)
+    let showHandler = handlerCheck(hqRef.current.style.display).display;
+    if (hqRef?.current) {
+      hqRef.current.style.display = showHandler;
+    }
     }
 
     if(element.target && element.target.id == "mySeries"){
       console.log("Entrou no mySeries");
-      seriesRef.current.style.display =  handlerCheck(seriesRef.current.style.display)
+      let showHandler = handlerCheck(seriesRef.current.style.display).display;
+      if (seriesRef?.current) {
+        seriesRef.current.style.display = showHandler;
+      }
     }
-
   } 
 
   const handlerCheck = (current) => {
-      if(current === "none"){
-        return "flex"
-      }
-    return "none"  
+        return {
+          display: current === "none" ? "flex" : "none",
+          showHandler: current === "none" ? true : false
+        };
   }
 
   console.log("Valor do modal props: " + props.mod);
@@ -322,7 +331,7 @@ const Modal = (props: DefaultModal) => {
                     <span className="title-dropdown" >
                       Eventos
                     </span>
-                    <BiChevronUp />
+                    {eventRef.current.style.display = 'flex' ? (<BiChevronUp />) : (<BiChevronDown/>)}
                   </div>
                   <ul className="list-dropdown"  ref={eventRef}>
                     {props.mod.events && props.mod.events.items ? (
@@ -337,8 +346,8 @@ const Modal = (props: DefaultModal) => {
                     <span className="title-dropdown">
                       HQs
                     </span>
-                    <BiChevronUp />
-                  </div>
+                    {hqRef.current.style.display = 'flex' ? (<BiChevronUp />) : (<BiChevronDown/>)}   
+                                   </div>
                   <ul className="list-dropdown" ref={hqRef}>
                     {props.mod.events && props.mod.events.items ? (
                       props.mod.stories.items.map((current, i) => {
@@ -352,7 +361,7 @@ const Modal = (props: DefaultModal) => {
                     <span className="title-dropdown">
                       Series
                     </span>
-                    <BiChevronUp />
+                    {seriesRef.current.style.display = 'flex' ? (<BiChevronUp />) : (<BiChevronDown/>)}   
                   </div>
                   <ul className="list-dropdown" ref={seriesRef}>
                     {props.mod.events && props.mod.events.items ? (

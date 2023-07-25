@@ -191,7 +191,7 @@ const Comics = (props) => {
   return (
     <ComicsSection id="comics">
       <div className="Comics-title">
-        <h3> HQs: conheça algumas das nossas historias em quadrinhos. </h3>
+        <h3> HQs: veja os lançamentos mais recentes. </h3>
       </div>
       <div className="Comics-carousel" ref={xParentRef}>
         <div className="Comics-Controll">
