@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import image from "../../src/assets/marvel1.png";
+
 const MainHeader = styled.main`
   height: 100vh;
   width: 100%;
@@ -38,6 +39,17 @@ const MainHeader = styled.main`
     padding: 0.1rem;
     margin-top: 1rem;
   }
+
+  @media only screen and (max-width: 768px) {
+    justify-content: center ;
+
+    .Main__article{
+      flex: 0 2 500px;
+    }
+
+
+  } 
+
 `;
 
 const Main = (props) => {

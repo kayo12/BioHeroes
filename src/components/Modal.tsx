@@ -264,7 +264,9 @@ const ModalDiv = styled.div<{ name: any }>`
 
 
 const Modal = (props: DefaultModal) => {
-  const [arrow, setArrow] = useState(false)
+  const [showEventList, setShowEventList] = useState(false);
+  const [showHqList, setShowHqList] = useState(false);
+  const [showSeriesList, setShowSeriesList] = useState(false);
 
   const eventRef = useRef(null);
   const hqRef = useRef(null);
@@ -275,7 +277,8 @@ const Modal = (props: DefaultModal) => {
 
     if(element.target && element.target.id == "myEvents"){
         console.log("Entrou no myEvents");
-      let showHandler =   handlerCheck(eventRef.current.style.display).display;
+      let showHandler = handlerCheck(eventRef.current.style.display).display;
+
       if (eventRef?.current) {
         eventRef.current.style.display = showHandler;
       }
@@ -284,8 +287,10 @@ const Modal = (props: DefaultModal) => {
     if(element.target && element.target.id == "myHqs"){
       console.log("Entrou no myHQs");
     let showHandler = handlerCheck(hqRef.current.style.display).display;
+
     if (hqRef?.current) {
       hqRef.current.style.display = showHandler;
+  
     }
     }
 
@@ -294,7 +299,16 @@ const Modal = (props: DefaultModal) => {
       let showHandler = handlerCheck(seriesRef.current.style.display).display;
       if (seriesRef?.current) {
         seriesRef.current.style.display = showHandler;
+       
       }
+    }
+
+    if (element.target.id === "myEvents") {
+      setShowEventList(!showEventList);
+    } else if (element.target.id === "myHqs") {
+      setShowHqList(!showHqList);
+    } else if (element.target.id === "mySeries") {
+      setShowSeriesList(!showSeriesList);
     }
   } 
 
@@ -304,6 +318,8 @@ const Modal = (props: DefaultModal) => {
           showHandler: current === "none" ? true : false
         };
   }
+
+
 
   console.log("Valor do modal props: " + props.mod);
   return (
@@ -331,8 +347,8 @@ const Modal = (props: DefaultModal) => {
                     <span className="title-dropdown" >
                       Eventos
                     </span>
-                    {eventRef.current.style.display = 'flex' ? (<BiChevronUp />) : (<BiChevronDown/>)}
-                  </div>
+                    {showEventList ? <BiChevronUp /> : <BiChevronDown />}
+                    </div>
                   <ul className="list-dropdown"  ref={eventRef}>
                     {props.mod.events && props.mod.events.items ? (
                       props.mod.events.items.map((current, i) => {
@@ -346,8 +362,8 @@ const Modal = (props: DefaultModal) => {
                     <span className="title-dropdown">
                       HQs
                     </span>
-                    {hqRef.current.style.display = 'flex' ? (<BiChevronUp />) : (<BiChevronDown/>)}   
-                                   </div>
+                    {showHqList ? <BiChevronUp /> : <BiChevronDown />}
+                                      </div>
                   <ul className="list-dropdown" ref={hqRef}>
                     {props.mod.events && props.mod.events.items ? (
                       props.mod.stories.items.map((current, i) => {
@@ -361,8 +377,8 @@ const Modal = (props: DefaultModal) => {
                     <span className="title-dropdown">
                       Series
                     </span>
-                    {seriesRef.current.style.display = 'flex' ? (<BiChevronUp />) : (<BiChevronDown/>)}   
-                  </div>
+                    {showSeriesList ? <BiChevronUp /> : <BiChevronDown />}  
+                                    </div>
                   <ul className="list-dropdown" ref={seriesRef}>
                     {props.mod.events && props.mod.events.items ? (
                       props.mod.series.items.map((current, i) => {

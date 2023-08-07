@@ -20,7 +20,6 @@ const NavHeader = styled.header`
     width: 100%;
     height: 100%;
     display: flex;
-    flex-wrap: wrap;
     background-color: #ffd700;
     justify-content: space-around;
   }
@@ -66,6 +65,17 @@ const NavHeader = styled.header`
     color: red;
     font-size: 1.8rem;
   }
+
+  @media only screen and  (max-width: 768px){
+
+    .NavList{
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    
+  }
+
 `;
 
 export default function Header(props) {
