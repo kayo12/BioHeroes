@@ -24,6 +24,11 @@ const Cards = (props: ModelCard) => {
     box-shadow: 3px 4px 4px #000000; /* Sombra do botão */
     border-radius: 5px;
    
+    @media only screen and  (max-width: 768px){
+      width: 300px;
+      height: 300px;
+    }
+
   `;
 
   const CardBody = styled.div`
@@ -46,6 +51,8 @@ const Cards = (props: ModelCard) => {
       color: #ffffff;
     }
     
+ 
+
   `;
 
   return (

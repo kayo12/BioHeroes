@@ -12,13 +12,13 @@ const PopSection = styled.section`
   justify-content: center;
   align-items: center;
   margin: 6rem 0;
-
+padding: 20px;
   .PopContainer {
     max-width: 980px;
     width: 100%;
     min-height: 550px;
-    justify-content: flex-end;
     display: flex;
+    justify-content: flex-end;
     align-items: flex-end;
     flex-direction: column;
   }
@@ -36,9 +36,9 @@ const PopSection = styled.section`
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
     flex: 1;
+    align-items: center;
     gap: 20px;
   }
 
@@ -101,6 +101,27 @@ const PopSection = styled.section`
     justify-content: space-bettwen;
     padding-right: 1.5rem;
   }
+
+  @media only screen and  (max-width: 768px){
+
+    .PopControl{
+      justify-content: center;
+      padding: 2rem 0;
+    }
+
+    .PopCarousel{
+      flex-wrap: wrap;
+      flex: none;
+      flex-direction: column-reverse;
+    }
+
+    .PopDescription {
+      flex: none;
+
+    }
+
+  }
+
 `;
 
 interface Series {
