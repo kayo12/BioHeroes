@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import Link from "next/link"
+import React, { useEffect, useState} from "react";
+
+import {ImMenu} from 'react-icons/im'
 
 
 const theme = {
@@ -7,7 +10,7 @@ const theme = {
   media: { 
     desktop : `@media (min-width: 1024px)`,
     tablet : `@media (max-width: 1023px) and (min-width: 768px)`,
-    mobile: `@media (max-width: 767px)`
+    mobile: `@media only screen and  (max-width: 768px)`
   }
 }
 
@@ -66,30 +69,57 @@ const NavHeader = styled.header`
     font-size: 1.8rem;
   }
 
-  @media only screen and  (max-width: 768px){
-
-    .NavList{
-      flex-direction: column;
-      align-items: flex-end;
+ ${theme.media.mobile}{
+    .Navbar{
+      padding: 5px;
     }
 
+    .NavList{
+      display:none;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-start;
+      z-index: 999;
+    }
     
   }
 
 `;
 
 export default function Header(props) {
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const MediaQuery = window.matchMedia('(max-width: 768px');
+    setIsMobile(MediaQuery.matches)
+
+    const handlerRize = (e) => {
+      setIsMobile(e.matches)
+    }
+
+    MediaQuery.addEventListener('change', handlerRize);
+    return () => {
+      MediaQuery.removeEventListener('change', handlerRize)
+    }
+
+  },[])
+
+
   return (
     <NavHeader>
       <nav className="Navbar">
         <div className="NavHeader__Logo">
           <span>BIOHEROES</span>
         </div>
-        <ul className="NavList">
-        <li className="NavLink"><Link href="#series" scroll={false} rel="noreferrer">Séries</Link></li>
-          <li className="NavLink"><Link href="#comics" scroll={false} rel="noreferrer">Quadrinhos</Link></li>
-          <li className="NavLink"><Link href="#chacters" scroll={false} rel="noreferrer">Personagens</Link></li>
-        </ul>
+      { isMobile ? (
+        <ImMenu></ImMenu>
+      ):(<ul className="NavList">
+      <li className="NavLink"><Link href="#series" scroll={false} rel="noreferrer">Séries</Link></li>
+        <li className="NavLink"><Link href="#comics" scroll={false} rel="noreferrer">Quadrinhos</Link></li>
+        <li className="NavLink"><Link href="#chacters" scroll={false} rel="noreferrer">Personagens</Link></li>
+      </ul>
+      )}
       </nav>
     </NavHeader>
   );
