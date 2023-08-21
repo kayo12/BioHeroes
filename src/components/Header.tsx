@@ -75,13 +75,21 @@ const NavHeader = styled.header`
     }
 
     .NavList{
-      display:none;
+      display:flex;
       flex-direction: column;
       align-items: flex-end;
       justify-content: flex-start;
       z-index: 999;
     }
-    
+
+
+    .NavBtn-icon{
+      position: relative;
+      top: 10px;
+      right: 10px;
+      font-size: 1.4rem;
+      color: #fff;
+    }
   }
 
 `;
@@ -103,8 +111,19 @@ export default function Header(props) {
       MediaQuery.removeEventListener('change', handlerRize)
     }
 
-  },[])
+  },[isMobile])
 
+  function menuList(e) {
+
+    e.target.style.display = "none";
+
+    setIsMobile(false)
+   
+   if(document.querySelectorAll(".NavList").length > 0 ){
+    console.log(document.querySelectorAll<HTMLElement>(".NavList")[0]) 
+    
+  }
+  }
 
   return (
     <NavHeader>
@@ -113,7 +132,7 @@ export default function Header(props) {
           <span>BIOHEROES</span>
         </div>
       { isMobile ? (
-        <ImMenu></ImMenu>
+        <ImMenu className="NavBtn-icon" onClick={(event) => menuList(event)}></ImMenu>
       ):(<ul className="NavList">
       <li className="NavLink"><Link href="#series" scroll={false} rel="noreferrer">Séries</Link></li>
         <li className="NavLink"><Link href="#comics" scroll={false} rel="noreferrer">Quadrinhos</Link></li>
