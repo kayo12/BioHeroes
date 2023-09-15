@@ -70,9 +70,15 @@ const NavHeader = styled.header`
   }
 
  ${theme.media.mobile}{
+
     .Navbar{
       padding: 5px;
     }
+
+    .NavLink > a:hover{
+    color: inherit;
+    font-size: inherit;
+  }
 
     .NavList{
       display:flex;
@@ -90,6 +96,7 @@ const NavHeader = styled.header`
       font-size: 1.4rem;
       color: #fff;
     }
+
   }
 
 `;
@@ -111,7 +118,7 @@ export default function Header(props) {
       MediaQuery.removeEventListener('change', handlerRize)
     }
 
-  },[isMobile])
+  },[])
 
   function menuList(e) {
 
