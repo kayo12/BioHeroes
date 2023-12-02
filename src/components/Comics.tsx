@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import imageComics from "../../public/comics2.jpg";
 import { HiOutlineChevronRight, HiOutlineChevronLeft } from "react-icons/hi";
+import {theme} from "./Header"
 
 const ComicsSection = styled.section`
   height: calc(100vh + 80px);
@@ -140,6 +141,13 @@ const ComicsSection = styled.section`
     visibility: visible;
     display: block;
   }
+
+  ${theme.media.mobile}{
+    
+
+
+  }
+
 `;
 
 const Comics = (props) => {

@@ -1,15 +1,16 @@
 import styled from "styled-components";
 import Link from "next/link"
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
-import {ImMenu} from 'react-icons/im'
+import { ImMenu } from 'react-icons/im'
+import { IoCloseSharp } from 'react-icons/io5'
 
 
-const theme = {
+export const theme = {
 
-  media: { 
-    desktop : `@media (min-width: 1024px)`,
-    tablet : `@media (max-width: 1023px) and (min-width: 768px)`,
+  media: {
+    desktop: `@media (min-width: 1024px)`,
+    tablet: `@media (max-width: 1023px) and (min-width: 768px)`,
     mobile: `@media only screen and  (max-width: 768px)`
   }
 }
@@ -25,6 +26,7 @@ const NavHeader = styled.header`
     display: flex;
     background-color: #ffd700;
     justify-content: space-around;
+    flex-wrap: wrap;
   }
 
   .NavHeader__Logo {
@@ -42,11 +44,16 @@ const NavHeader = styled.header`
     background-color: #ff0a0a;
   }
 
+  .NavBtn-icon{
+    font-size: 0px;
+  }
+
   .NavList {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex: 2;
+   flex: 2;
+
   }
 
   .NavLink {
@@ -69,10 +76,23 @@ const NavHeader = styled.header`
     font-size: 1.8rem;
   }
 
+
  ${theme.media.mobile}{
 
     .Navbar{
       padding: 5px;
+      height: auto;
+      position: fixed;
+      z-index: 9999;
+
+    }
+
+    .NavHeader__Logo{
+      align-items: flex-start;
+    }
+
+    .NavLink{
+
     }
 
     .NavLink > a:hover{
@@ -86,22 +106,27 @@ const NavHeader = styled.header`
       align-items: flex-end;
       justify-content: flex-start;
       z-index: 999;
+      width: 100%;
+      align-items: center;
+      padding: 1rem;
+      flex: none;
     }
 
 
     .NavBtn-icon{
-      position: relative;
+      position: absolute;
       top: 10px;
       right: 10px;
       font-size: 1.4rem;
       color: #fff;
+      z-index: 9999;
+      cursor: pointer;
     }
-
   }
 
 `;
 
-export default function Header(props) {
+export  function Header(props) {
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -118,18 +143,30 @@ export default function Header(props) {
       MediaQuery.removeEventListener('change', handlerRize)
     }
 
-  },[])
+  }, [])
 
   function menuList(e) {
 
     e.target.style.display = "none";
+    e.target.parentElement.style.cssText = `
+      display: flex;
+      
+    `;
 
     setIsMobile(false)
-   
-   if(document.querySelectorAll(".NavList").length > 0 ){
-    console.log(document.querySelectorAll<HTMLElement>(".NavList")[0]) 
-    
+
+    if (document.querySelectorAll(".NavList").length > 0) {
+      console.log(document.querySelectorAll<HTMLElement>(".NavList")[0])
+      document.querySelectorAll<HTMLElement>(".NavList")[0].style.cssText = `
+    flex-direction: column;
+    justify-content: center;
+    `;
+    }
   }
+
+  function CloseMenu(e) {
+    e.target.parentElement.style.cssText = `display: none`;
+    setIsMobile(true);
   }
 
   return (
@@ -138,15 +175,20 @@ export default function Header(props) {
         <div className="NavHeader__Logo">
           <span>BIOHEROES</span>
         </div>
-      { isMobile ? (
-        <ImMenu className="NavBtn-icon" onClick={(event) => menuList(event)}></ImMenu>
-      ):(<ul className="NavList">
-      <li className="NavLink"><Link href="#series" scroll={false} rel="noreferrer">Séries</Link></li>
-        <li className="NavLink"><Link href="#comics" scroll={false} rel="noreferrer">Quadrinhos</Link></li>
-        <li className="NavLink"><Link href="#chacters" scroll={false} rel="noreferrer">Personagens</Link></li>
-      </ul>
-      )}
+        {isMobile ? (
+          <ImMenu className="NavBtn-icon" onClick={(event) => menuList(event)}></ImMenu>
+        ) : (
+          <>
+            <ImMenu className="NavBtn-icon" onClick={(e) => { CloseMenu(e) }} />
+            <ul className="NavList">
+              <li className="NavLink"><Link href="#series" scroll={false} rel="noreferrer">Séries</Link></li>
+              <li className="NavLink"><Link href="#comics" scroll={false} rel="noreferrer">Quadrinhos</Link></li>
+              <li className="NavLink"><Link href="#chacters" scroll={false} rel="noreferrer">Personagens</Link></li>
+            </ul>
+          </>
+        )}
       </nav>
     </NavHeader>
   );
 }
+

@@ -11,6 +11,15 @@ interface DefaultModal {
   description?: string;
 }
 
+const theme = {
+
+  media: { 
+    desktop : `@media (min-width: 1024px)`,
+    tablet : `@media (max-width: 1023px) and (min-width: 768px)`,
+    mobile: `@media only screen and  (max-width: 768px)`
+  }
+}
+
 const ModalDiv = styled.div<{ name: any }>`
   height: 100vh;
   width: 100vw;
@@ -27,7 +36,7 @@ const ModalDiv = styled.div<{ name: any }>`
   .modal-content {
     display: flex;
     flex-direction: column;
-    flex: 0 2 1000px;
+    flex: 0 2 70%;
     height: 600px;
     position: relative;
     -webkit-animation-name: animatetop;
@@ -172,7 +181,7 @@ const ModalDiv = styled.div<{ name: any }>`
   }
 
   .modal-description_list{
-    padding:  0 20px;
+    padding:  0.9rem 20px;
     flex: auto;
     display: flex;
     flex-flow: column nowrap;
@@ -183,7 +192,7 @@ const ModalDiv = styled.div<{ name: any }>`
 
   .description-list_body{
     text-shadow: 1px 1px 2px #000, 2px 2px 4px #000, 3px 3px 6px #000;
-
+padding: 0.4rem;
    display: flex;
    height: auto;
    flex: auto;
@@ -260,6 +269,29 @@ const ModalDiv = styled.div<{ name: any }>`
       opacity: 1;
     }
   }
+
+
+  ${theme.media.mobile}{
+
+    #modal{
+      align-items: end;
+    }
+
+    .modal-body{
+      flex-direction: column;
+      align-items: center;
+      overflow-y: scroll;
+    }
+
+  }
+
+  .flip{
+    width: 250px;
+    height: 400px;
+    min-height: 300px;
+  }
+  
+
 `;
 
 
@@ -339,7 +371,7 @@ const Modal = (props: DefaultModal) => {
               </div>
               <div className="modal-description_list">
                 <ul className="description-list_body">
-                  <li>ULTIMA EDIÇÃO: {props.mod.modified}</li>
+                  <li>ULTIMA EDIÇÃO: {new Date(props.mod.modified).toLocaleDateString()}</li>
                   <li>SOBRE O PERSONAGEM: {props.mod.description}</li>
                 </ul>
                 <div className="description-dropdown">
