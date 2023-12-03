@@ -1,4 +1,36 @@
+<img src="public/guerra_civil.jpg" style="text-align: right"/>
+
+# BIOHEROES
 This project was built using Nextjs 13 in conjunction with Typescript to manage the data consumed by the [Marvel API](https://developer.marvel.com). Despite the simplicity of the project, the choice to use the Marvel API highlights the potential of this project to present information related to the Marvel universe, such as characters, comics and events. The Marvel API offers a variety of endpoints that can be explored to provide a rich and engaging experience to users.
+
+
+## Open API MARVEL
+Marvel's Open API offers a variety of features that enable developers to access and explore the vast universe of Marvel Comics in a flexible and comprehensive way. Some of the key features include:
+
+Detailed Character Information:
+
+Access to comprehensive details about iconic Marvel characters, including biographies, powers, histories, and associated events.
+Comic List:
+
+Features for retrieving lists of comics, including details such as title, description, creators involved, and featured characters.
+Details about Creators:
+
+Information about the creators behind the comics, such as writers, artists and editors, providing insights into the teams responsible for the stories.
+Event Exploration:
+
+Resources to explore and gain insight into epic events within the Marvel universe, with details on plots, characters involved, and plot ramifications.
+Image Galleries:
+
+Access to a variety of images, including comic book covers, character illustrations, and concept art, allowing for visual incorporation into apps and websites.
+Secure Authentication:
+
+Authentication capabilities that ensure data security and enable access control to API endpoints.
+Queries and Filters Support:
+
+Ability to perform advanced queries and apply filters to customize requests and obtain specific data as needed.
+Detailed Documentation:
+
+Comprehensive documentation that provides detailed guidance on the API structure, available endpoints, authentication, and practical usage examples.
 
 Tools
 - [Nextjs](https://nextjs.org)
