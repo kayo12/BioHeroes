@@ -1,4 +1,8 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This project was built using Nextjs 13 in conjunction with Typescript to manage the data consumed by the [Marvel API](https://developer.marvel.com). Despite the simplicity of the project, the choice to use the Marvel API highlights the potential of this project to present information related to the Marvel universe, such as characters, comics and events. The Marvel API offers a variety of endpoints that can be explored to provide a rich and engaging experience to users.
+
+Tools
+- [Nextjs](https://nextjs.org)
+- [Typescrypt](https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwix_MH5wvOCAxVjQkgAHUZVDMUYABABGgJjZQ&ae=2&gclid=Cj0KCQiA67CrBhC1ARIsACKAa8TTtSLsYnVQIXXRw9ElK76qNfxFXftj7pxq_-DmFBKfiuFGH7w-KrIaAozdEALw_wcB&ohost=www.google.com&cid=CAESVuD2TDdQLDCUnafrpQoeB15o09PU-LrHghkQezo3weqnDWjv3mbQG3wHEkrxzXEFCjCodIpTY1lxpqkENGB7F2EFNuoZD32Gg9aHyJ92b5IUPdb9SJg4&sig=AOD64_3r2G_p4IYpbtjB1Y2c9dyxadqFUw&q&adurl&ved=2ahUKEwjn67v5wvOCAxWuJ7kGHefRDrUQ0Qx6BAgKEAE)
 
 ## Getting Started
 
