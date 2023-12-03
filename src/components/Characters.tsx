@@ -114,7 +114,6 @@ export default function Characters(props) {
   const groups = () => {
     let first = pages != 0 ? Math.abs(8 - Number(pages * 8)) : 0;
     let last = pages != 0 ? Number(pages * 8) : 8;
-    console.log(char.length);
     let gp = char.slice(first, last).map((current, index) => {
       console.log(current)
       return (
@@ -138,11 +137,12 @@ export default function Characters(props) {
     console.log("HandlerClick: ")
     setPages(indx + 1);
    clicked ?  setClicked([true, indx]): setClicked([false,indx])
-   console.log(clicked[0] + ':' +clicked[1])
+   console.log(clicked[0] + ':' +clicked[1]);
   };
 
   const pagingLength = () => {
-    let group = Math.round(char.length / 9);
+    let group = Math.round(char.length / 13);
+    console.log(`valor do group: ${group}`)
     let pading = loading ? (
       <div>Loading...</div>
     ) : (
@@ -153,6 +153,7 @@ export default function Characters(props) {
             onClick={() => handlerClick(indx)}
             key={`${indx}_`}
           >
+            
             {/* condição para mostrar a quantidade de paginas exibidas */}
             {limit >= 200 ? ((limit / 200) * 10 ) + indx + pageAll: indx + pageAll }
           </button>

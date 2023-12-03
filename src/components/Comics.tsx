@@ -143,7 +143,9 @@ const ComicsSection = styled.section`
   }
 
   ${theme.media.mobile}{
-    
+    .Comics-carousel{
+      overflow-x: auto;
+    }
 
 
   }
@@ -182,16 +184,20 @@ const Comics = (props) => {
       document
         .querySelector<HTMLElement>("#btnLeft")
         .addEventListener("click", () => {
+          
           xParent.scrollLeft -= Number(
-            xParent.clientWidth - xChild.offsetWidth
+            theme.media.mobile ? outerWidth / 2  : xParent.clientWidth - xChild.offsetWidth
           );
         });
       document
         .querySelector<HTMLElement>("#btnRight")
         .addEventListener("click", () => {
+          
           xParent.scrollLeft += Number(
-            xParent.clientWidth - xChild.offsetWidth
+            theme.media.mobile ? outerWidth / 2 : xParent.clientWidth - xChild.offsetWidth
+          
           );
+          console.log(xParent.clientWidth - xChild.offsetWidth)
         });
     }
   }
