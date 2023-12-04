@@ -1,5 +1,6 @@
 
-<H2  > BIOHEROES :superhero:	:superhero_man:</H1>
+
+<H2 > BIOHEROES :superhero:	:superhero_man:</H1>
 
 This project was built using Nextjs 13 in conjunction with Typescript to manage the data consumed by the [Marvel API](https://developer.marvel.com). Despite the simplicity of the project, the choice to use the Marvel API highlights the potential of this project to present information related to the Marvel universe, such as characters, comics and events. The Marvel API offers a variety of endpoints that can be explored to provide a rich and engaging experience to users.
 
@@ -8,6 +9,7 @@ This project was built using Nextjs 13 in conjunction with Typescript to manage 
 
 
 ## Open API MARVEL
+<img src="public/card_eventos.png"/>
 Marvel's Open API offers a variety of features that enable developers to access and explore the vast universe of Marvel Comics in a flexible and comprehensive way. Some of the key features include:
 
 - **Detailed Character Information:** Access to comprehensive details about iconic Marvel characters, including biographies, powers, histories, and associated events.
