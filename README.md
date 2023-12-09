@@ -1,6 +1,6 @@
 
 
-<H2 > BIOHEROES :superhero:	:superhero_man:</H1>
+<H2 title="Deploy" > <a href="https://bioheroes.vercel.app/" target="blank" />BIOHEROES </a>:superhero:	:superhero_man:</H1>
 
 This project was built using Nextjs 13 in conjunction with Typescript to manage the data consumed by the [Marvel API](https://developer.marvel.com). Despite the simplicity of the project, the choice to use the Marvel API highlights the potential of this project to present information related to the Marvel universe, such as characters, comics and events. The Marvel API offers a variety of endpoints that can be explored to provide a rich and engaging experience to users.
 
@@ -42,5 +42,8 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+
+## Deploy
+
 
 
